@@ -386,14 +386,20 @@
 
             </div>
 
-            <!-- Mobile carousel dots (hidden on desktop) -->
-            <div class="ownership-dots" id="ownershipDots" aria-label="Card navigation">
-                <button class="ownership-dot active" data-index="0" aria-label="Card 1"></button>
-                <button class="ownership-dot" data-index="1" aria-label="Card 2"></button>
-                <button class="ownership-dot" data-index="2" aria-label="Card 3"></button>
-                <button class="ownership-dot" data-index="3" aria-label="Card 4"></button>
-                <button class="ownership-dot" data-index="4" aria-label="Card 5"></button>
-                <button class="ownership-dot" data-index="5" aria-label="Card 6"></button>
+            <!-- Mobile carousel dots + swipe hint (hidden on desktop) -->
+            <div class="ownership-nav" id="ownershipDots" aria-label="Card navigation">
+                <div class="ownership-dots-row">
+                    <button class="ownership-dot active" data-index="0" aria-label="Card 1"></button>
+                    <button class="ownership-dot" data-index="1" aria-label="Card 2"></button>
+                    <button class="ownership-dot" data-index="2" aria-label="Card 3"></button>
+                    <button class="ownership-dot" data-index="3" aria-label="Card 4"></button>
+                    <button class="ownership-dot" data-index="4" aria-label="Card 5"></button>
+                    <button class="ownership-dot" data-index="5" aria-label="Card 6"></button>
+                </div>
+                <p class="ownership-swipe-hint">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 8l-4 4 4 4"/><path d="M18 12H6"/><path d="M10 8l4 4-4 4"/></svg>
+                    Swipe to explore
+                </p>
             </div>
         </div>
         <div class="flex_center">

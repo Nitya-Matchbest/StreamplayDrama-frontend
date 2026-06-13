@@ -1749,10 +1749,11 @@
    PLATFORM OWNERSHIP - MOBILE SWIPE CAROUSEL
    ============================================================ */
 
-/* --- Dots: hidden on desktop --- */
-.ownership-dots {
+/* --- Nav wrapper + dots: hidden on desktop --- */
+.ownership-nav {
   display: none;
 }
+
 
 /* --- Mobile (768px and below): activate carousel --- */
 @media screen and (max-width: 768px) {
@@ -1801,39 +1802,69 @@
     box-shadow: 0 8px 28px rgba(163, 0, 0, 0.22) !important;
   }
 
-  /* Show dots on mobile */
-  .ownership-dots {
+  /* Show ownership nav on mobile — identical style to drama carousel dots */
+  .ownership-nav {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     gap: 8px;
-    margin: 16px 0 8px;
-    padding: 0 20px;
+    margin: 4px 0 14px;
+    padding: 0 16px;
   }
 
+  /* Dots row */
+  .ownership-dots-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  /* Each dot — identical to .drama-dot */
   .ownership-dot {
-    width: 36px;
-    height: 4px;
+    width: 22px;
+    height: 3px;
     border-radius: 2px;
-    background: rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.16);
     border: none;
     cursor: pointer;
     padding: 0;
-    transition: background 0.3s ease, transform 0.2s ease, width 0.3s ease;
+    transition: background 0.35s ease, width 0.35s ease, transform 0.2s ease, box-shadow 0.35s ease;
     flex-shrink: 0;
   }
 
+  /* Active dot — identical to .drama-dot.active */
   .ownership-dot.active {
-    background: linear-gradient(90deg, #A30000, #F5A623);
-    transform: scaleY(1.5);
-    box-shadow: 0 0 8px rgba(245, 166, 35, 0.45);
-    width: 52px;
+    width: 38px;
+    background: linear-gradient(90deg, #A30000 0%, #F5A623 100%);
+    transform: scaleY(1.6);
+    box-shadow: 0 0 10px rgba(245, 166, 35, 0.5);
   }
 
   .ownership-dot:hover:not(.active) {
     background: rgba(255, 255, 255, 0.38);
   }
-}
+
+  /* Swipe hint — identical to .drama-swipe-hint */
+  .ownership-swipe-hint {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin: 0;
+    opacity: 0.7;
+    transition: opacity 0.5s ease;
+  }
+
+  .ownership-swipe-hint svg {
+    opacity: 0.6;
+    flex-shrink: 0;
+  }
+
 
 /* --- Small Mobile (480px and below) --- */
 @media screen and (max-width: 480px) {
@@ -1847,18 +1878,18 @@
     padding: 20px 16px !important;
   }
 
-  .ownership-dots {
+  .ownership-nav {
+    padding: 0 12px;
     gap: 6px;
-    margin: 12px 0 6px;
+    margin: 0 0 10px;
   }
 
   .ownership-dot {
-    width: 30px;
-    height: 3px;
+    width: 18px;
   }
 
   .ownership-dot.active {
-    width: 44px;
+    width: 30px;
   }
 }
 

@@ -400,9 +400,10 @@ document.addEventListener('DOMContentLoaded', function () {
 // PLATFORM OWNERSHIP - MOBILE SWIPE CAROUSEL WITH DOTS
 // ============================================================
 document.addEventListener('DOMContentLoaded', function () {
-    var grid  = document.getElementById('ownershipGrid');
-    var dots  = document.querySelectorAll('#ownershipDots .ownership-dot');
-    var cards = grid ? grid.querySelectorAll('.ownership-card') : [];
+    var grid      = document.getElementById('ownershipGrid');
+    var dots      = document.querySelectorAll('#ownershipDots .ownership-dot');
+    var swipeHint = document.querySelector('.ownership-swipe-hint');
+    var cards     = grid ? grid.querySelectorAll('.ownership-card') : [];
 
     if (!grid || cards.length === 0 || dots.length === 0) return;
 
@@ -418,7 +419,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (cards[index]) cards[index].classList.add('carousel-active');
     }
 
-    // IntersectionObserver: detect which card is most visible in the carousel
+    // IntersectionObserver: detect which card is most visible
     var observer = new IntersectionObserver(function (entries) {
         if (!isMobile()) return;
         var best = -1, bestRatio = 0;
@@ -432,12 +433,18 @@ document.addEventListener('DOMContentLoaded', function () {
             setActiveDot(best);
             setActiveCard(best);
         }
-    }, {
-        root: grid,
-        threshold: [0.4, 0.6, 0.8]
-    });
+    }, { root: grid, threshold: [0.4, 0.6, 0.8] });
 
     cards.forEach(function (card) { observer.observe(card); });
+
+    // Fade swipe hint after first scroll
+    var hintFaded = false;
+    grid.addEventListener('scroll', function () {
+        if (!hintFaded && swipeHint) {
+            swipeHint.style.opacity = '0';
+            hintFaded = true;
+        }
+    }, { passive: true });
 
     // Dot click: scroll matching card into view
     dots.forEach(function (dot, i) {
@@ -462,4 +469,3 @@ document.addEventListener('DOMContentLoaded', function () {
     setActiveDot(0);
     setActiveCard(0);
 });
-
