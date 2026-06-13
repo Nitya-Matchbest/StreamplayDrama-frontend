@@ -3132,9 +3132,99 @@ a.link:hover svg {
   display: block;
 }
 
-/* Progress Bar — hidden */
+/* Progress Bar — replaced by dots nav */
 .carousel-progress {
   display: none;
+}
+
+/* ---- Drama Carousel Dots Nav ---- */
+.drama-carousel-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin: 4px 0 18px;
+  padding: 0 40px;
+}
+
+.drama-carousel-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.drama-dot {
+  width: 28px;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.16);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.35s ease, width 0.35s ease, transform 0.2s ease, box-shadow 0.35s ease;
+  flex-shrink: 0;
+}
+
+.drama-dot.active {
+  width: 46px;
+  background: linear-gradient(90deg, #A30000 0%, #F5A623 100%);
+  transform: scaleY(1.6);
+  box-shadow: 0 0 10px rgba(245, 166, 35, 0.5);
+}
+
+.drama-dot:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.38);
+}
+
+.drama-swipe-hint {
+  display: none;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin: 0;
+  opacity: 0.7;
+}
+
+.drama-swipe-hint svg {
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .drama-swipe-hint {
+    display: flex;
+  }
+  .drama-carousel-nav {
+    padding: 0 16px;
+    margin: 2px 0 14px;
+    gap: 8px;
+  }
+  .drama-dot {
+    width: 22px;
+    height: 3px;
+  }
+  .drama-dot.active {
+    width: 38px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .drama-carousel-nav {
+    padding: 0 12px;
+    gap: 6px;
+    margin: 0 0 10px;
+  }
+  .drama-dot {
+    width: 18px;
+  }
+  .drama-dot.active {
+    width: 30px;
+  }
 }
 
 /* Touch/Swipe Support Indicator */

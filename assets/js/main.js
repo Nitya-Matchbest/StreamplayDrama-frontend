@@ -229,143 +229,102 @@ window.addEventListener('scroll', function() {
 
 
 // ============================================================
-// NETFLIX-STYLE CAROUSEL FUNCTIONALITY
+// NETFLIX-STYLE CAROUSEL - DOTS + SCROLL FUNCTIONALITY
 // ============================================================
 document.addEventListener('DOMContentLoaded', function() {
-    const carousel = document.getElementById('dramaCarousel');
-    const prevBtn = document.querySelector('.carousel-prev');
-    const nextBtn = document.querySelector('.carousel-next');
-    const progressBar = document.getElementById('carouselProgress');
-    
-    if (!carousel || !prevBtn || !nextBtn) return;
-    
-    const cards = carousel.querySelectorAll('.carousel-card');
-    const cardWidth = 220 + 20; // card width + gap
-    const scrollAmount = cardWidth * 3; // Scroll 3 cards at a time
-    
-    // Update progress bar
-    function updateProgress() {
-        const scrollPercentage = (carousel.scrollLeft / (carousel.scrollWidth - carousel.clientWidth)) * 100;
-        progressBar.style.width = scrollPercentage + '%';
-        
-        // Update button states
-        prevBtn.disabled = carousel.scrollLeft <= 0;
-        nextBtn.disabled = carousel.scrollLeft >= carousel.scrollWidth - carousel.clientWidth - 10;
+    var carousel  = document.getElementById('dramaCarousel');
+    var prevBtn   = document.querySelector('.carousel-prev');
+    var nextBtn   = document.querySelector('.carousel-next');
+    var dotsWrap  = document.getElementById('dramaCarouselDots');
+    var swipeHint = document.querySelector('.drama-swipe-hint');
+
+    if (!carousel) return;
+
+    var cards       = Array.from(carousel.querySelectorAll('.carousel-card'));
+    var cardCount   = cards.length;
+    var dots        = [];
+    var scrollAmount = (cards[0] ? cards[0].offsetWidth + 20 : 200) * 3;
+
+    // --- Build dots ---
+    if (dotsWrap && cardCount > 0) {
+        cards.forEach(function(_, i) {
+            var btn = document.createElement('button');
+            btn.className = 'drama-dot' + (i === 0 ? ' active' : '');
+            btn.setAttribute('aria-label', 'Go to card ' + (i + 1));
+            btn.addEventListener('click', function() {
+                cards[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                setActiveDot(i);
+            });
+            dotsWrap.appendChild(btn);
+            dots.push(btn);
+        });
     }
-    
-    // Scroll to previous
-    prevBtn.addEventListener('click', function() {
-        carousel.scrollBy({
-            left: -scrollAmount,
-            behavior: 'smooth'
+
+    function setActiveDot(index) {
+        dots.forEach(function(d) { d.classList.remove('active'); });
+        if (dots[index]) dots[index].classList.add('active');
+    }
+
+    // --- IntersectionObserver: which card is most visible ---
+    var observer = new IntersectionObserver(function(entries) {
+        var best = -1, bestRatio = 0;
+        entries.forEach(function(entry) {
+            if (entry.intersectionRatio > bestRatio) {
+                bestRatio = entry.intersectionRatio;
+                best = cards.indexOf(entry.target);
+            }
         });
-    });
-    
-    // Scroll to next
-    nextBtn.addEventListener('click', function() {
-        carousel.scrollBy({
-            left: scrollAmount,
-            behavior: 'smooth'
+        if (best !== -1) setActiveDot(best);
+    }, { root: carousel, threshold: [0.3, 0.5, 0.7] });
+
+    cards.forEach(function(card) { observer.observe(card); });
+
+    // --- Fade swipe hint after first scroll ---
+    var hintFaded = false;
+    carousel.addEventListener('scroll', function() {
+        if (!hintFaded && swipeHint) {
+            swipeHint.style.opacity = '0';
+            swipeHint.style.transition = 'opacity 0.5s ease';
+            hintFaded = true;
+        }
+    }, { passive: true });
+
+    // --- Prev / Next buttons ---
+    if (prevBtn) {
+        prevBtn.addEventListener('click', function() {
+            carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
         });
-    });
-    
-    // Update progress on scroll
-    carousel.addEventListener('scroll', updateProgress);
-    
-    // Initial progress update
-    updateProgress();
-    
-    // Touch/Swipe support for mobile
-    let isDown = false;
-    let startX;
-    let scrollLeft;
-    
-    carousel.addEventListener('mousedown', (e) => {
-        isDown = true;
-        carousel.style.cursor = 'grabbing';
-        startX = e.pageX - carousel.offsetLeft;
-        scrollLeft = carousel.scrollLeft;
-    });
-    
-    carousel.addEventListener('mouseleave', () => {
-        isDown = false;
-        carousel.style.cursor = 'grab';
-    });
-    
-    carousel.addEventListener('mouseup', () => {
-        isDown = false;
-        carousel.style.cursor = 'grab';
-    });
-    
-    carousel.addEventListener('mousemove', (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - carousel.offsetLeft;
-        const walk = (x - startX) * 2;
-        carousel.scrollLeft = scrollLeft - walk;
-    });
-    
-    // Touch events for mobile
-    let touchStartX = 0;
-    let touchEndX = 0;
-    
-    carousel.addEventListener('touchstart', (e) => {
+    }
+    if (nextBtn) {
+        nextBtn.addEventListener('click', function() {
+            carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        });
+    }
+
+    // --- Touch swipe ---
+    var touchStartX = 0;
+    carousel.addEventListener('touchstart', function(e) {
         touchStartX = e.changedTouches[0].screenX;
     }, { passive: true });
-    
-    carousel.addEventListener('touchend', (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
+    carousel.addEventListener('touchend', function(e) {
+        var diff = touchStartX - e.changedTouches[0].screenX;
+        if (Math.abs(diff) > 50) {
+            carousel.scrollBy({ left: diff > 0 ? scrollAmount : -scrollAmount, behavior: 'smooth' });
+        }
     }, { passive: true });
-    
-    function handleSwipe() {
-        const swipeThreshold = 50;
-        const diff = touchStartX - touchEndX;
-        
-        if (Math.abs(diff) > swipeThreshold) {
-            if (diff > 0) {
-                // Swipe left - scroll right
-                carousel.scrollBy({
-                    left: scrollAmount,
-                    behavior: 'smooth'
-                });
-            } else {
-                // Swipe right - scroll left
-                carousel.scrollBy({
-                    left: -scrollAmount,
-                    behavior: 'smooth'
-                });
-            }
-        }
-    }
-    
-    // Keyboard navigation
-    carousel.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') {
-            carousel.scrollBy({
-                left: -scrollAmount,
-                behavior: 'smooth'
-            });
-        } else if (e.key === 'ArrowRight') {
-            carousel.scrollBy({
-                left: scrollAmount,
-                behavior: 'smooth'
-            });
-        }
-    });
-    
-    // Make carousel focusable for keyboard navigation
-    carousel.setAttribute('tabindex', '0');
-    
-    // Auto-scroll on window resize to maintain position
-    let resizeTimer;
-    window.addEventListener('resize', function() {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(function() {
-            updateProgress();
-        }, 250);
+
+    // --- Mouse drag ---
+    var isDown = false, startX, scrollLeft;
+    carousel.addEventListener('mousedown', function(e) { isDown = true; startX = e.pageX - carousel.offsetLeft; scrollLeft = carousel.scrollLeft; });
+    carousel.addEventListener('mouseleave', function() { isDown = false; });
+    carousel.addEventListener('mouseup', function() { isDown = false; });
+    carousel.addEventListener('mousemove', function(e) {
+        if (!isDown) return;
+        e.preventDefault();
+        carousel.scrollLeft = scrollLeft - (e.pageX - carousel.offsetLeft - startX) * 2;
     });
 });
+
 
 
 // ============================================================
