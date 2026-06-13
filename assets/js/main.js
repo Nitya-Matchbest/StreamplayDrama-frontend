@@ -436,3 +436,71 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
+// ============================================================
+// PLATFORM OWNERSHIP - MOBILE SWIPE CAROUSEL WITH DOTS
+// ============================================================
+document.addEventListener('DOMContentLoaded', function () {
+    var grid  = document.getElementById('ownershipGrid');
+    var dots  = document.querySelectorAll('#ownershipDots .ownership-dot');
+    var cards = grid ? grid.querySelectorAll('.ownership-card') : [];
+
+    if (!grid || cards.length === 0 || dots.length === 0) return;
+
+    function isMobile() { return window.innerWidth <= 768; }
+
+    function setActiveDot(index) {
+        dots.forEach(function (d) { d.classList.remove('active'); });
+        if (dots[index]) dots[index].classList.add('active');
+    }
+
+    function setActiveCard(index) {
+        cards.forEach(function (c) { c.classList.remove('carousel-active'); });
+        if (cards[index]) cards[index].classList.add('carousel-active');
+    }
+
+    // IntersectionObserver: detect which card is most visible in the carousel
+    var observer = new IntersectionObserver(function (entries) {
+        if (!isMobile()) return;
+        var best = -1, bestRatio = 0;
+        entries.forEach(function (entry) {
+            if (entry.intersectionRatio > bestRatio) {
+                bestRatio = entry.intersectionRatio;
+                best = Array.prototype.indexOf.call(cards, entry.target);
+            }
+        });
+        if (best !== -1) {
+            setActiveDot(best);
+            setActiveCard(best);
+        }
+    }, {
+        root: grid,
+        threshold: [0.4, 0.6, 0.8]
+    });
+
+    cards.forEach(function (card) { observer.observe(card); });
+
+    // Dot click: scroll matching card into view
+    dots.forEach(function (dot, i) {
+        dot.addEventListener('click', function () {
+            if (!isMobile()) return;
+            cards[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            setActiveDot(i);
+            setActiveCard(i);
+        });
+    });
+
+    // On resize: reset when returning to desktop
+    window.addEventListener('resize', function () {
+        if (!isMobile()) {
+            cards.forEach(function (c) { c.classList.remove('carousel-active'); });
+            dots.forEach(function (d) { d.classList.remove('active'); });
+            if (dots[0]) dots[0].classList.add('active');
+        }
+    });
+
+    // Init
+    setActiveDot(0);
+    setActiveCard(0);
+});
+

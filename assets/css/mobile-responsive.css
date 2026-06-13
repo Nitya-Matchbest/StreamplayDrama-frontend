@@ -1739,7 +1739,126 @@
     padding-bottom: 12px !important;
   }
 
+
   .section_container.sip-bg.blackbg {
     padding: 22px 0 32px !important;
   }
 }
+
+/* ============================================================
+   PLATFORM OWNERSHIP - MOBILE SWIPE CAROUSEL
+   ============================================================ */
+
+/* --- Dots: hidden on desktop --- */
+.ownership-dots {
+  display: none;
+}
+
+/* --- Mobile (768px and below): activate carousel --- */
+@media screen and (max-width: 768px) {
+
+  /* Make ownership section scroll-friendly */
+  .section_container.sip-bg.blackbg {
+    overflow: visible !important;
+  }
+
+  /* Grid → horizontal flex carousel */
+  .ownership-grid-container {
+    display: flex !important;
+    flex-direction: row !important;
+    grid-template-columns: unset !important;
+    grid-template-rows: unset !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    gap: 16px !important;
+    margin: 0 0 0 0 !important;
+    padding: 8px 20px 12px !important;
+    /* Hide scrollbar */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .ownership-grid-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Each card: fixed width, snap */
+  .ownership-card {
+    flex: 0 0 80vw !important;
+    max-width: 340px !important;
+    scroll-snap-align: center !important;
+    border-radius: 18px !important;
+    padding: 24px 20px !important;
+    /* Reset hover-lift so snapping feels natural */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
+  }
+
+  /* Active card highlight */
+  .ownership-card.carousel-active {
+    border-color: rgba(163, 0, 0, 0.55) !important;
+    box-shadow: 0 8px 28px rgba(163, 0, 0, 0.22) !important;
+  }
+
+  /* Show dots on mobile */
+  .ownership-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin: 16px 0 8px;
+    padding: 0 20px;
+  }
+
+  .ownership-dot {
+    width: 36px;
+    height: 4px;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.18);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.3s ease, transform 0.2s ease, width 0.3s ease;
+    flex-shrink: 0;
+  }
+
+  .ownership-dot.active {
+    background: linear-gradient(90deg, #A30000, #F5A623);
+    transform: scaleY(1.5);
+    box-shadow: 0 0 8px rgba(245, 166, 35, 0.45);
+    width: 52px;
+  }
+
+  .ownership-dot:hover:not(.active) {
+    background: rgba(255, 255, 255, 0.38);
+  }
+}
+
+/* --- Small Mobile (480px and below) --- */
+@media screen and (max-width: 480px) {
+  .ownership-grid-container {
+    padding: 6px 15px 10px !important;
+    gap: 12px !important;
+  }
+
+  .ownership-card {
+    flex: 0 0 85vw !important;
+    padding: 20px 16px !important;
+  }
+
+  .ownership-dots {
+    gap: 6px;
+    margin: 12px 0 6px;
+  }
+
+  .ownership-dot {
+    width: 30px;
+    height: 3px;
+  }
+
+  .ownership-dot.active {
+    width: 44px;
+  }
+}
+
