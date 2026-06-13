@@ -1865,6 +1865,7 @@
     flex-shrink: 0;
   }
 
+} /* end @media max-width: 768px */
 
 /* --- Small Mobile (480px and below) --- */
 @media screen and (max-width: 480px) {
