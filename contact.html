@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Us - Drama Platform</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="description" content="Get in touch with Drama Platform team. Request a demo or contact our sales team.">
+    <meta name="theme-color" content="#A30000">
+    <link rel="stylesheet" href="https://use.typekit.net/nuo5dim.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/mobile-responsive.css">
+    <style>
+        .contact-section {
+            padding: 120px 0 80px;
+            background: linear-gradient(135deg, #111827 0%, #1F2937 100%);
+        }
+        
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #1F2937;
+            border-radius: 15px;
+            padding: 50px;
+            border: 1px solid #374151;
+        }
+        
+        .contact-title {
+            font-size: 36px;
+            color: #FFFFFF;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        
+        .contact-subtitle {
+            font-size: 18px;
+            color: #D1D5DB;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #FFFFFF;
+            font-weight: 600;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            background: #111827;
+            border: 1px solid #374151;
+            border-radius: 8px;
+            color: #FFFFFF;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: #DC2626;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .phone-group {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 10px;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: #DC2626;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background: #B91C1C;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(220, 38, 38, 0.4);
+        }
+        
+        .submit-btn:disabled {
+            background: #6B7280;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .success-message {
+            background: #10B981;
+            color: #FFFFFF;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .error-message {
+            background: #EF4444;
+            color: #FFFFFF;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .contact-container {
+                padding: 30px 20px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-title {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body class="home-header drama-menu">
+
+<!-- Header -->
+<header class="header" id="drama-menu-new">
+    <div class="header-section">
+        <div class="container clearfix">
+            <div class="logo-image">
+                <a class="logo" href="index.html">
+                    <img width="280" height="54" src="assets/images/logo.png" class="fixed-logo" alt="Drama Platform Logo">
+                </a>
+            </div>
+
+            <div class="hamburger" id="ham">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <nav class="nav nav-menu" id="nav">
+                <div class="nav-center">
+                    <a class="nav-tab" href="index.html">Home</a>
+                    <a class="nav-tab" href="blogs.html">Blog</a>
+                </div>
+                <div class="expert">
+                    <a rel="nofollow" class="request-demo" href="contact.html">Contact Sales</a>
+                    <a rel="nofollow" id="sales-header" href="contact.html">Request Demo</a>
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<!-- Contact Section -->
+<section class="contact-section">
+    <div class="container">
+        <div class="contact-container">
+            <h1 class="contact-title">Get in Touch</h1>
+            <p class="contact-subtitle">Request a demo and discover how Drama Platform can transform your streaming business</p>
+            
+            <div class="success-message" id="successMessage">
+                ✓ Thank you! Your message has been sent successfully. We'll get back to you soon.
+            </div>
+            
+            <div class="error-message" id="errorMessage">
+                ✗ Something went wrong. Please try again.
+            </div>
+            
+            <form id="contactForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name *</label>
+                        <input type="text" id="firstName" name="firstName" required placeholder="John">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name *</label>
+                        <input type="text" id="lastName" name="lastName" required placeholder="Doe">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required placeholder="john.doe@example.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <div class="phone-group">
+                        <input type="text" id="countryCode" name="countryCode" value="+1" placeholder="+1">
+                        <input type="tel" id="phone" name="phone" required placeholder="(555) 123-4567">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea id="message" name="message" required placeholder="Tell us about your project..."></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    Send Message
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Col 1: Logo & Socials & Compatibility -->
+                <div class="footer-col brand-col">
+                    <img src="assets/images/logo.png" alt="StreamPlay Drama Logo" class="footer-logo">
+                    <p class="brand-desc">Launch, host, and scale your dedicated OTT drama streaming service with 100% platform ownership and zero revenue sharing.</p>
+                    <div class="footer-socials">
+                        <a href="#" aria-label="LinkedIn" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        </a>
+                        <a href="#" aria-label="Twitter / X" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
+                        </a>
+                        <a href="#" aria-label="YouTube" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.41 19c1.71.46 8.59.46 8.59.46s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                        </a>
+                    </div>
+                    <div class="supported-platforms">
+                        <span class="platforms-title">App Deployments</span>
+                        <div class="platform-badges-row">
+                            <span class="platform-badge" title="Web Apps">Web</span>
+                            <span class="platform-badge" title="iOS Apps">iOS</span>
+                            <span class="platform-badge" title="Android Apps">Android</span>
+                            <span class="platform-badge" title="Apple TV">Apple TV</span>
+                            <span class="platform-badge" title="Android TV">Android TV</span>
+                            <span class="platform-badge" title="Roku TV">Roku</span>
+                            <span class="platform-badge" title="Amazon Fire TV">Fire TV</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Col 2: Platforms We Build -->
+                <div class="footer-col">
+                    <h4>Platforms We Build</h4>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">K-Drama OTT Services</a></li>
+                        <li><a href="contact.html">Turkish Epic Channels</a></li>
+                        <li><a href="contact.html">Arabic Series Hubs</a></li>
+                        <li><a href="contact.html">Indie Web Series Hubs</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Resources -->
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="blogs.html">Blogs &amp; News</a></li>
+                        <li><a href="contact.html">Contact Sales</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Contact Us & Status -->
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul class="footer-contact-info">
+                        <li>
+                            <div class="contact-item">
+                                <svg class="contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                                <div>
+                                    <span class="info-label">Sales Team</span>
+                                    <a href="mailto:sales@streamplay.ai">sales@streamplay.ai</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="contact-item">
+                                <svg class="contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                <div>
+                                    <span class="info-label">HQ Address</span>
+                                    <span>Suite 500, San Francisco, CA</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="platform-status">
+                        <span class="status-dot"></span>
+                        <span class="status-text">All Systems Operational</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2026 StreamPlay Drama Play. All rights reserved.</p>
+                <p class="disclaimer">Disclaimer: Drama Unit is a specialized B2B vertical of StreamPlay, built for premium OTT drama delivery.</p>
+            </div>
+        </div>
+    </footer>
+
+<script src="assets/js/main.js"></script>
+<script>
+    document.getElementById('contactForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const submitBtn = document.getElementById('submitBtn');
+        const successMsg = document.getElementById('successMessage');
+        const errorMsg = document.getElementById('errorMessage');
+        
+        // Disable button and show loading
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+        successMsg.style.display = 'none';
+        errorMsg.style.display = 'none';
+        
+        // Get form data
+        const formData = new FormData(this);
+        
+        try {
+            const response = await fetch('send-email.php', {
+                method: 'POST',
+                body: formData
+            });
+            
+            const result = await response.json();
+            
+            if (result.success) {
+                successMsg.style.display = 'block';
+                this.reset();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                throw new Error(result.message || 'Failed to send message');
+            }
+        } catch (error) {
+            errorMsg.textContent = '✗ ' + error.message;
+            errorMsg.style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Send Message';
+        }
+    });
+</script>
+</body>
+</html>

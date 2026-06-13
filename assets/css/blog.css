@@ -1,0 +1,574 @@
+/* =============================================================
+   Drama Platform - Blog Styles
+   Crimson Cinema Theme
+   ============================================================= */
+
+/* Blog Hero Section */
+.blog-hero {
+    padding: 120px 0 60px;
+    background: linear-gradient(135deg, #111827 0%, #1F2937 100%);
+    text-align: center;
+}
+
+.blog-hero-title {
+    font-size: 48px;
+    color: #FFFFFF;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.blog-hero-subtitle {
+    font-size: 20px;
+    color: #D1D5DB;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Blog Section */
+.blog-section {
+    padding: 60px 0;
+    background: #111827;
+    min-height: 60vh;
+}
+
+/* Filters */
+.blog-filters {
+    margin-bottom: 50px;
+}
+
+.search-box {
+    margin-bottom: 25px;
+}
+
+.search-field {
+    width: 100%;
+    max-width: 500px;
+    padding: 15px 20px;
+    background: #1F2937;
+    border: 2px solid #374151;
+    border-radius: 10px;
+    color: #FFFFFF;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+.search-field:focus {
+    border-color: #DC2626;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.2);
+}
+
+.category-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+}
+
+.category-btn {
+    padding: 10px 25px;
+    background: #1F2937;
+    border: 2px solid #374151;
+    border-radius: 25px;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.category-btn:hover {
+    border-color: #DC2626;
+    background: rgba(220, 38, 38, 0.1);
+}
+
+.category-btn.active {
+    background: #DC2626;
+    border-color: #DC2626;
+    color: #FFFFFF;
+}
+
+/* Blog Grid */
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.blog-card {
+    background: #1F2937;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid #374151;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.blog-card:hover {
+    border-color: #DC2626;
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(220, 38, 38, 0.3);
+}
+
+.blog-card-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+}
+
+.blog-card-content {
+    padding: 25px;
+}
+
+.blog-card-category {
+    display: inline-block;
+    background: #DC2626;
+    color: #FFFFFF;
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.blog-card-title {
+    font-size: 22px;
+    color: #FFFFFF;
+    margin-bottom: 12px;
+    line-height: 1.4;
+    font-weight: 600;
+}
+
+.blog-card-excerpt {
+    color: #D1D5DB;
+    font-size: 15px;
+    line-height: 24px;
+    margin-bottom: 20px;
+}
+
+.blog-card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #9CA3AF;
+    font-size: 13px;
+    padding-top: 15px;
+    border-top: 1px solid #374151;
+}
+
+.blog-card-date {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.blog-card-views {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid #374151;
+    border-top-color: #DC2626;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto 20px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.loading-spinner p {
+    color: #9CA3AF;
+    font-size: 16px;
+}
+
+/* No Results */
+.no-results {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.no-results-icon {
+    font-size: 64px;
+    margin-bottom: 20px;
+}
+
+.no-results h3 {
+    color: #FFFFFF;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.no-results p {
+    color: #9CA3AF;
+    font-size: 16px;
+}
+
+/* Pagination */
+.blog-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 50px;
+}
+
+.pagination-btn {
+    padding: 12px 25px;
+    background: #1F2937;
+    border: 2px solid #374151;
+    border-radius: 8px;
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.pagination-btn:hover:not(:disabled) {
+    background: #DC2626;
+    border-color: #DC2626;
+}
+
+.pagination-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.pagination-info {
+    color: #D1D5DB;
+    font-size: 15px;
+}
+
+/* Blog Detail */
+.blog-detail-section {
+    padding: 120px 0 60px;
+    background: #111827;
+    min-height: 70vh;
+}
+
+.blog-detail-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.blog-detail-header {
+    margin-bottom: 40px;
+}
+
+.blog-detail-category {
+    display: inline-block;
+    background: #DC2626;
+    color: #FFFFFF;
+    padding: 8px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.blog-detail-title {
+    font-size: 42px;
+    color: #FFFFFF;
+    line-height: 1.3;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.blog-detail-meta {
+    display: flex;
+    gap: 25px;
+    color: #9CA3AF;
+    font-size: 15px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #374151;
+}
+
+.blog-detail-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.blog-detail-image {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin: 40px 0;
+    border: 1px solid #374151;
+}
+
+.blog-detail-content {
+    color: #D1D5DB;
+}
+
+.blog-content-section {
+    margin-bottom: 40px;
+}
+
+.blog-content-section h2 {
+    font-size: 32px;
+    color: #FFFFFF;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.blog-content-section p {
+    font-size: 18px;
+    line-height: 32px;
+    color: #D1D5DB;
+    margin-bottom: 20px;
+}
+
+/* Rich text content container - allows CKEditor HTML to render properly */
+.section-body-content {
+    font-size: 18px;
+    line-height: 32px;
+    color: #D1D5DB;
+    margin-bottom: 20px;
+}
+
+.section-body-content p {
+    margin-bottom: 18px;
+    line-height: 32px;
+    font-size: 18px;
+    color: #D1D5DB;
+}
+
+.section-body-content h1,
+.section-body-content h2,
+.section-body-content h3,
+.section-body-content h4 {
+    color: #FFFFFF;
+    margin: 28px 0 14px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.section-body-content h1 { font-size: 32px; }
+.section-body-content h2 { font-size: 26px; }
+.section-body-content h3 { font-size: 22px; }
+.section-body-content h4 { font-size: 18px; }
+
+/* Restore bullet points */
+.section-body-content ul {
+    list-style-type: disc;
+    padding-left: 28px;
+    margin-bottom: 20px;
+}
+
+.section-body-content ol {
+    list-style-type: decimal;
+    padding-left: 28px;
+    margin-bottom: 20px;
+}
+
+.section-body-content ul li,
+.section-body-content ol li {
+    font-size: 17px;
+    line-height: 30px;
+    color: #D1D5DB;
+    margin-bottom: 8px;
+    padding-left: 6px;
+}
+
+.section-body-content ul li::marker {
+    color: #DC2626;
+}
+
+.section-body-content ol li::marker {
+    color: #F59E0B;
+    font-weight: 700;
+}
+
+/* Link styles */
+.section-body-content a {
+    color: #DC2626;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease;
+    font-weight: 500;
+}
+
+.section-body-content a:hover {
+    color: #F59E0B;
+}
+
+/* Blockquote */
+.section-body-content blockquote {
+    border-left: 4px solid #DC2626;
+    background: rgba(220, 38, 38, 0.06);
+    padding: 16px 20px;
+    margin: 20px 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    color: #E5E7EB;
+}
+
+/* Bold, Italic, Strikethrough */
+.section-body-content strong,
+.section-body-content b {
+    color: #FFFFFF;
+    font-weight: 700;
+}
+
+.section-body-content em,
+.section-body-content i {
+    color: #E5E7EB;
+    font-style: italic;
+}
+
+.section-body-content s,
+.section-body-content del {
+    color: #9CA3AF;
+    text-decoration: line-through;
+}
+
+/* Horizontal rule */
+.section-body-content hr {
+    border: none;
+    border-top: 1px solid #374151;
+    margin: 30px 0;
+}
+
+
+.blog-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 1px solid #374151;
+}
+
+.blog-tag {
+    background: #1F2937;
+    color: #F59E0B;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    border: 1px solid #374151;
+}
+
+/* Related Articles */
+.related-articles-section {
+    padding: 60px 0;
+    background: #0F172A;
+}
+
+.related-articles-section .section-title {
+    text-align: center;
+    font-size: 36px;
+    color: #FFFFFF;
+    margin-bottom: 50px;
+}
+
+/* Error Message */
+.error-message-box {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.error-message-box h2 {
+    color: #DC2626;
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.error-message-box p {
+    color: #9CA3AF;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+/* Responsive */
+@media screen and (max-width: 1024px) {
+    .blog-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 25px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .blog-hero {
+        padding: 100px 0 40px;
+    }
+    
+    .blog-hero-title {
+        font-size: 36px;
+    }
+    
+    .blog-hero-subtitle {
+        font-size: 18px;
+    }
+    
+    .blog-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .category-buttons {
+        justify-content: flex-start;
+    }
+    
+    .category-btn {
+        font-size: 13px;
+        padding: 8px 18px;
+    }
+    
+    .blog-detail-title {
+        font-size: 32px;
+    }
+    
+    .blog-content-section h2 {
+        font-size: 26px;
+    }
+    
+    .blog-content-section p {
+        font-size: 16px;
+        line-height: 28px;
+    }
+    
+    .blog-pagination {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .pagination-btn {
+        width: 100%;
+        max-width: 200px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .blog-hero-title {
+        font-size: 28px;
+    }
+    
+    .blog-card-title {
+        font-size: 20px;
+    }
+    
+    .blog-detail-title {
+        font-size: 28px;
+    }
+    
+    .search-field {
+        font-size: 14px;
+    }
+}
