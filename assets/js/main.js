@@ -400,12 +400,31 @@ document.addEventListener('DOMContentLoaded', function () {
 // PLATFORM OWNERSHIP - MOBILE SWIPE CAROUSEL WITH DOTS
 // ============================================================
 document.addEventListener('DOMContentLoaded', function () {
-    var grid      = document.getElementById('ownershipGrid');
-    var dots      = document.querySelectorAll('#ownershipDots .ownership-dot');
-    var swipeHint = document.querySelector('.ownership-swipe-hint');
-    var cards     = grid ? grid.querySelectorAll('.ownership-card') : [];
+    var grid  = document.getElementById('ownershipGrid');
+    if (!grid) return;
 
-    if (!grid || cards.length === 0 || dots.length === 0) return;
+    var cards = Array.from(grid.querySelectorAll('.ownership-card'));
+    if (cards.length === 0) return;
+
+    // Create the dots container dynamically
+    var navHtml = `
+        <div class="ownership-nav" id="ownershipDots" aria-label="Card navigation">
+            <div class="ownership-dots-row">
+                ${cards.map((_, i) => `<button class="ownership-dot ${i === 0 ? 'active' : ''}" data-index="${i}" aria-label="Card ${i + 1}"></button>`).join('')}
+            </div>
+            <p class="ownership-swipe-hint">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 8l-4 4 4 4"/><path d="M18 12H6"/><path d="M10 8l4 4-4 4"/></svg>
+                Swipe to explore
+            </p>
+        </div>
+    `;
+    
+    // Insert immediately after the grid
+    grid.insertAdjacentHTML('afterend', navHtml);
+
+    var dotsWrap  = document.getElementById('ownershipDots');
+    var dots      = dotsWrap.querySelectorAll('.ownership-dot');
+    var swipeHint = dotsWrap.querySelector('.ownership-swipe-hint');
 
     function isMobile() { return window.innerWidth <= 768; }
 
@@ -426,7 +445,7 @@ document.addEventListener('DOMContentLoaded', function () {
         entries.forEach(function (entry) {
             if (entry.intersectionRatio > bestRatio) {
                 bestRatio = entry.intersectionRatio;
-                best = Array.prototype.indexOf.call(cards, entry.target);
+                best = cards.indexOf(entry.target);
             }
         });
         if (best !== -1) {
@@ -440,7 +459,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Fade swipe hint after first scroll
     var hintFaded = false;
     grid.addEventListener('scroll', function () {
-        if (!hintFaded && swipeHint) {
+        if (!hintFaded && swipeHint && isMobile()) {
             swipeHint.style.opacity = '0';
             hintFaded = true;
         }
@@ -466,6 +485,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Init
-    setActiveDot(0);
-    setActiveCard(0);
+    if (isMobile()) {
+        setActiveDot(0);
+        setActiveCard(0);
+    }
 });
