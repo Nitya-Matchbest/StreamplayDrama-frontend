@@ -3,7 +3,7 @@
    ============================================================= */
 
 // API Configuration - Update when deploying
-const API_BASE = ' https://streamplaydrama-backend.onrender.com';
+const API_BASE = 'https://streamplaydrama-backend.onrender.com';
 const API_URL = `${API_BASE}/api/blogs`;
 
 // Get slug from URL
