@@ -1516,139 +1516,205 @@
 
 
 /* ============================================================
-   HERO SECTION - MOBILE RESPONSIVE
+   MARKETING HERO + CAROUSEL OVERLAP FIX
    ============================================================ */
 
+/* Tablet (768px and below) */
 @media screen and (max-width: 768px) {
-  .hero-section {
-    height: calc(100vh - 70px);
-    margin-top: 70px;
-  }
-  
-  .hero-slide img {
-    object-fit: cover;
-  }
-  
-  .hero-overlay {
-    background: linear-gradient(
-      180deg,
-      rgba(13, 13, 26, 0.4) 0%,
-      rgba(13, 13, 26, 0.6) 100%
-    );
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .hero-section {
-    height: calc(100vh - 65px);
+  /* Hero section: reduce overall spacing */
+  .hero-section.marketing-hero-section.centered-layout {
     margin-top: 65px;
+    padding: 40px 0 35px;
+    overflow: visible;
+    position: relative;
+    z-index: 1;
   }
-}
 
-/* Ensure body starts from top with no extra space */
-body {
-  margin: 0;
-  padding: 0;
-}
+  /* Tighten the column gap so bullet grid doesn't push into carousel */
+  .hero-container {
+    gap: 28px !important;
+  }
 
-/* Ensure no extra space after header */
-header.header {
-  margin-bottom: 0;
-  position: fixed;
-  top: 0;
-  width: 100%;
-}
+  /* Cap the hero image height so it doesn't take up the whole screen */
+  .hero-visual-centered {
+    max-height: 240px;
+    overflow: hidden;
+  }
 
-.hero-section {
-  margin-bottom: 0;
-}
+  .hero-visual-centered .hero-image {
+    max-height: 240px;
+    object-fit: contain;
+  }
 
-/* ============================================================
-   CAROUSEL - MOBILE RESPONSIVE OVERRIDES
-   ============================================================ */
+  /* Bullet grid: 1 column, compact */
+  .hero-bullet-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
 
-@media screen and (max-width: 768px) {
+  .hero-bullet-grid li {
+    padding: 14px 16px;
+    gap: 12px;
+  }
+
+  .hero-bullet-grid li h3 {
+    font-size: 15px;
+    margin-bottom: 3px;
+  }
+
+  .hero-bullet-grid li p {
+    font-size: 13px;
+    line-height: 1.45;
+  }
+
+  .hero-footer-content {
+    gap: 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* CTA buttons: stack vertically */
+  .hero-cta-buttons {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .hero-cta-buttons .button {
+    width: 100%;
+    min-width: unset;
+    text-align: center;
+  }
+
+  /* Carousel section: ensure it sits clearly BELOW hero with enough space */
   .carousel-section {
-    padding: 40px 0;
+    position: relative;
+    z-index: 1;
+    padding: 30px 0 40px !important;
+    overflow: visible;
+    margin-top: 0;
   }
-  
-  .carousel-header {
-    padding: 0 20px;
-  }
-  
-  .carousel-wrapper {
-    margin: 0;
-    padding: 0;
-  }
-  
-  .carousel-track {
-    padding: 25px 20px 15px;
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory;
-  }
-  
-  .carousel-card {
-    scroll-snap-align: start;
-  }
-  
-  .carousel-progress {
-    margin: 20px 20px 0;
-    width: calc(100% - 40px);
-  }
-  
-  .carousel-wrapper::after {
-    width: 40px;
-  }
-}
 
-@media screen and (max-width: 480px) {
-  .carousel-section {
-    padding: 35px 0;
-  }
-  
+  /* Carousel header: ensure it's always visible and not hidden behind hero */
   .carousel-header {
-    padding: 0 15px;
+    padding: 0 16px;
+    margin-bottom: 18px;
+    position: relative;
+    z-index: 2;
   }
-  
-  .carousel-track {
-    padding: 20px 15px 15px;
-  }
-  
-  .carousel-progress {
-    margin: 18px 15px 0;
-    width: calc(100% - 30px);
-  }
-  
-  .carousel-title::after {
-    display: none;
-  }
-  
-  .carousel-wrapper::after {
-    width: 30px;
-  }
-}
 
-@media screen and (min-width: 1440px) {
+  .carousel-title {
+    font-size: 1.3rem;
+    line-height: 1.3;
+  }
+
+  /* Carousel track: remove large top padding that caused upward overflow */
   .carousel-track {
-    gap: 25px;
+    padding: 10px 16px 16px !important;
+    gap: 12px;
   }
-  
+
+  /* Cards: slightly smaller on mobile */
   .carousel-card {
-    width: 240px;
+    width: 140px;
   }
-  
+
   .card-poster,
   .card-placeholder {
-    height: 360px;
+    height: 210px;
   }
-  
-  .play-icon {
-    width: 70px;
-    height: 70px;
+}
+
+/* Small Mobile (480px and below) */
+@media screen and (max-width: 480px) {
+  .hero-section.marketing-hero-section.centered-layout {
+    margin-top: 60px;
+    padding: 30px 0 28px;
   }
-  
-  .play-icon svg {
-    width: 28px;
-    height: 28px;
+
+  .hero-container {
+    gap: 22px !important;
+  }
+
+  /* Hero image: even smaller on tiny screens */
+  .hero-visual-centered {
+    max-height: 200px;
+  }
+
+  .hero-visual-centered .hero-image {
+    max-height: 200px;
+  }
+
+  .hero-bullet-grid {
+    gap: 10px;
+  }
+
+  .hero-bullet-grid li {
+    padding: 12px 14px;
+    gap: 10px;
+  }
+
+  .hero-bullet-grid li h3 {
+    font-size: 14px;
+  }
+
+  .hero-bullet-grid li p {
+    font-size: 12px;
+  }
+
+  .hero-footer-content {
+    gap: 18px;
+  }
+
+  /* Carousel section */
+  .carousel-section {
+    padding: 24px 0 32px !important;
+  }
+
+  .carousel-header {
+    padding: 0 12px;
+    margin-bottom: 14px;
+  }
+
+  .carousel-title {
+    font-size: 1.15rem;
+  }
+
+  .carousel-track {
+    padding: 8px 12px 12px !important;
+    gap: 10px;
+  }
+
+  .carousel-card {
+    width: 125px;
+  }
+
+  .card-poster,
+  .card-placeholder {
+    height: 188px;
+  }
+}
+
+/* Extra small (360px and below) */
+@media screen and (max-width: 360px) {
+  .hero-visual-centered {
+    max-height: 175px;
+  }
+
+  .hero-visual-centered .hero-image {
+    max-height: 175px;
+  }
+
+  .hero-bullet-grid li h3 {
+    font-size: 13px;
+  }
+
+  .carousel-card {
+    width: 115px;
+  }
+
+  .card-poster,
+  .card-placeholder {
+    height: 170px;
   }
 }
