@@ -1,0 +1,280 @@
+/* Pricing Page Styles */
+.pricing-hero {
+    padding-top: 140px;
+    padding-bottom: 60px;
+    background-image: radial-gradient(circle at center top, #1E1233 0%, #090910 70%);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    text-align: center;
+}
+
+.pricing-title {
+    font-size: 3.5rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.pricing-subtitle {
+    font-size: 1.25rem;
+    color: #9CA3AF;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.pricing-main {
+    padding: 80px 0;
+    background-color: #07070B;
+}
+
+/* Pricing Grid */
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto 80px;
+}
+
+/* Pricing Card */
+.pricing-card {
+    background: rgba(10, 18, 50, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 40px 30px;
+    position: relative;
+    backdrop-filter: blur(10px);
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.pricing-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(130, 42, 238, 0.4);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 40px rgba(130, 42, 238, 0.15);
+}
+
+.pricing-card.popular {
+    border-color: rgba(130, 42, 238, 0.6);
+    background: linear-gradient(180deg, rgba(20, 15, 40, 0.8) 0%, rgba(10, 18, 50, 0.5) 100%);
+    box-shadow: 0 0 30px rgba(130, 42, 238, 0.1);
+}
+
+.pricing-card.popular::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #571b86, #822AEE, #571b86);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.pc-badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, #571b86, #822AEE);
+    color: #fff;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 10px rgba(130, 42, 238, 0.4);
+}
+
+.pc-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.pc-price {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+}
+
+.pc-price span {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #9CA3AF;
+}
+
+.pc-desc {
+    font-size: 1.1rem;
+    color: #D1D5DB;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.pc-features {
+    flex-grow: 1;
+    margin-bottom: 40px;
+}
+
+.pc-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    color: #fff;
+    font-size: 1.05rem;
+    margin-bottom: 16px;
+}
+
+.pc-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background: rgba(130, 42, 238, 0.2);
+    border-radius: 50%;
+    color: #c084fc;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.pc-icon svg {
+    width: 12px;
+    height: 12px;
+}
+
+.btn-primary-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(90deg, #571b86, #3d0866);
+    color: #fff;
+    padding: 16px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.1);
+    width: 100%;
+}
+
+.btn-primary-block:hover {
+    background: linear-gradient(90deg, #822AEE, #571b86);
+    box-shadow: 0 10px 20px rgba(130, 42, 238, 0.3);
+    color: #fff;
+}
+
+.btn-outline-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.05);
+    color: #fff;
+    padding: 16px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.2);
+    width: 100%;
+}
+
+.btn-outline-block:hover {
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+}
+
+/* Free Trial / Demo Banner */
+.demo-banner {
+    background: linear-gradient(135deg, #151a21 0%, #0a1232 100%);
+    border: 1px solid rgba(130, 42, 238, 0.2);
+    border-radius: 20px;
+    padding: 50px;
+    max-width: 1000px;
+    margin: 0 auto 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.demo-banner-content h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.demo-banner-content p {
+    font-size: 1.1rem;
+    color: #9CA3AF;
+    margin: 0;
+}
+
+/* FAQ Section */
+.faq-section {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-title {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+    color: #fff;
+}
+
+.faq-item {
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding: 24px 0;
+}
+
+.faq-question {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 12px;
+}
+
+.faq-answer {
+    color: #9CA3AF;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .epc-features {
+        grid-template-columns: 1fr;
+    }
+    
+    .epc-cta-group {
+        flex-direction: column;
+    }
+    
+    .demo-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px 20px;
+    }
+    
+    .pricing-title {
+        font-size: 2.5rem;
+    }
+    
+    .enterprise-pricing-card {
+        padding: 40px 20px;
+    }
+}

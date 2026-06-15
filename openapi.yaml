@@ -1,0 +1,151 @@
+openapi: 3.0.3
+info:
+  title: StreamPlay API
+  description: |-
+    The StreamPlay Enterprise API allows developers to programmatically manage video assets, retrieve analytics, and synchronize user billing data with third-party CRMs and CMS systems.
+    
+    ## Authentication
+    All API requests require a Bearer token. You can generate a token in your StreamPlay Dashboard under Developer Settings.
+  version: 1.0.0
+  contact:
+    email: developers@streamplay.ai
+servers:
+  - url: https://api.streamplay.ai/v1
+    description: Production Server
+tags:
+  - name: Video Ingestion
+    description: Upload and manage video assets, subtitles, and metadata.
+  - name: Analytics
+    description: Retrieve real-time viewer data and drop-off metrics.
+  - name: Users & DRM
+    description: Manage user sessions and generate secure playback tokens.
+paths:
+  /videos/ingest:
+    post:
+      tags:
+        - Video Ingestion
+      summary: Upload a new video asset
+      description: Initiates an upload pipeline for a new drama episode or movie. Automatically triggers transcoding and DRM encryption.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: "The Royal Crown - S01E04"
+                source_url:
+                  type: string
+                  example: "s3://my-bucket/videos/episode-4-raw.mp4"
+                metadata:
+                  type: object
+                  properties:
+                    genre:
+                      type: string
+                      example: "Historical Drama"
+                    language:
+                      type: string
+                      example: "ko-KR"
+      responses:
+        '202':
+          description: Ingestion pipeline started successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  job_id:
+                    type: string
+                    example: "job_9x8f7a6b5c"
+                  status:
+                    type: string
+                    example: "processing"
+        '400':
+          description: Invalid request payload
+  
+  /analytics/viewers:
+    get:
+      tags:
+        - Analytics
+      summary: Get viewer statistics
+      description: Returns aggregate viewer statistics for a specified time range.
+      parameters:
+        - name: start_date
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+          example: "2026-06-01"
+        - name: end_date
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+          example: "2026-06-15"
+      responses:
+        '200':
+          description: Analytics data retrieved
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_views:
+                    type: integer
+                    example: 1450230
+                  unique_viewers:
+                    type: integer
+                    example: 890400
+                  average_watch_time_minutes:
+                    type: number
+                    example: 42.5
+
+  /users/drm-token:
+    post:
+      tags:
+        - Users & DRM
+      summary: Generate DRM playback token
+      description: Generates a short-lived Widevine/FairPlay DRM token for secure video playback on client devices.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: string
+                  example: "usr_102938"
+                video_id:
+                  type: string
+                  example: "vid_998877"
+                device_type:
+                  type: string
+                  example: "ios"
+      responses:
+        '200':
+          description: Token generated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  playback_token:
+                    type: string
+                    example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+                  expires_in:
+                    type: integer
+                    example: 3600
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+security:
+  - bearerAuth: []

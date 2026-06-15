@@ -1326,9 +1326,9 @@ header.scrolled {
 
 .nav-center {
   display: flex;
-  gap: 2rem;
+  gap: 2.5rem;
   position: absolute;
-  left: 44%;
+  left: 38%;
   transform: translateX(-50%);
   pointer-events: all;
   z-index: 1;
@@ -4295,4 +4295,44 @@ a.link:hover svg {
   .highlight-output .output-value {
     font-size: 30px;
   }
+}
+
+/* Dropdown Menu Styles */
+.nav-dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.nav-dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgba(10, 18, 50, 0.95);
+    min-width: 220px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    z-index: 100;
+    padding: 10px 0;
+}
+
+.nav-dropdown:hover .nav-dropdown-content {
+    display: block;
+}
+
+.nav-dropdown-content a {
+    color: #D1D5DB;
+    padding: 12px 20px;
+    text-decoration: none;
+    display: block;
+    font-size: 15px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.nav-dropdown-content a:hover {
+    background-color: rgba(130, 42, 238, 0.2);
+    color: #fff;
 }

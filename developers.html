@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Developer API - StreamPlay</title>
+    <meta name="description" content="StreamPlay API Documentation. Integrate video pipelines, manage users, and pull analytics.">
+    
+    <link rel="icon" href="assets/images/drama-icon.png" type="image/x-icon">
+    
+    <!-- Fonts and Base CSS -->
+    <link rel="stylesheet" href="https://use.typekit.net/nuo5dim.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/mobile-responsive.css">
+
+    <!-- Swagger UI CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist@5.9.0/swagger-ui.css" />
+    
+    <style>
+        .dev-hero {
+            padding-top: 140px;
+            padding-bottom: 60px;
+            background: radial-gradient(circle at center top, #2d0a4e 0%, #090910 70%);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+        }
+        .dev-title {
+            font-size: 3.5rem;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        .dev-subtitle {
+            font-size: 1.25rem;
+            color: #9CA3AF;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .swagger-container {
+            background-color: #ffffff; /* Swagger UI requires a light background by default to look decent without extensive custom CSS */
+            padding: 40px 0;
+            border-radius: 12px;
+            margin: 60px auto;
+            max-width: 1200px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        /* Adjusting Swagger UI for a slightly more integrated look */
+        .swagger-ui .info .title { color: #1E1233 !important; }
+        .swagger-ui .topbar { display: none; } 
+    </style>
+</head>
+
+<body class="home-header drama-menu">
+
+    <!-- Header Starts -->
+    <header class="header" id="drama-menu-new">
+        <div class="header-section">
+            <div class="container clearfix">
+                <div class="logo-image">
+                    <a class="logo" href="index.html">
+                        <img width="280" height="54" src="assets/images/logo.png" class="fixed-logo" alt="Drama Platform Logo">
+                    </a>
+                </div>
+
+                <div class="hamburger" id="ham">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <nav class="nav nav-menu" id="nav">
+                    <div class="nav-center">
+                        <a id="home-nav" class="nav-tab" href="index.html" title="Home">Home</a>
+                        <div class="nav-dropdown">
+                            <a id="features-nav" class="nav-tab" href="features.html" title="Features">Features</a>
+                            <div class="nav-dropdown-content">
+                                <a href="features.html">All Features</a>
+                                <a href="usecase-kdrama.html">K-Drama Platforms</a>
+                                <a href="usecase-turkish.html">Turkish Platforms</a>
+                                <a href="usecase-arabic.html">Arabic Platforms</a>
+                                <a href="usecase-indie.html">Indie Platforms</a>
+                            </div>
+                        </div>
+                        <a id="pricing-nav" class="nav-tab" href="pricing.html" title="Pricing">Pricing</a>
+                        <a id="blog-nav" class="nav-tab" href="blogs.html" title="Blog">Blog</a>
+                        <a id="testimonials-nav" class="nav-tab" href="testimonials.html" title="Testimonials">Testimonials</a>
+                    </div>
+                    <div class="expert">
+                        <a rel="nofollow" class="request-demo" href="contact.html" title="Contact Sales">Contact Sales</a>
+                        <a rel="nofollow" id="sales-header" href="demo.html" title="Watch Demo">Watch Demo</a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Developer Hero Section -->
+        <section class="dev-hero">
+            <div class="container">
+                <h1 class="dev-title">Developer <span class="highlight-text">API Hub</span></h1>
+                <p class="dev-subtitle">Integrate StreamPlay with your existing ecosystem. Automate video ingestion, sync user data, and build custom applications with our enterprise REST API.</p>
+            </div>
+        </section>
+
+        <!-- Swagger UI Container -->
+        <section style="background-color: #07070B; padding-bottom: 80px;">
+            <div class="container">
+                <div class="swagger-container">
+                    <div id="swagger-ui"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col brand-col">
+                    <img src="assets/images/logo.png" alt="StreamPlay Drama Logo" class="footer-logo">
+                    <p class="brand-desc">Launch, host, and scale your dedicated OTT drama streaming service with 100% platform ownership and zero revenue sharing.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="features.html">Features</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="developers.html">Developer API</a></li>
+                        <li><a href="contact.html">Contact Sales</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2026 StreamPlay Drama Play. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    
+    <!-- Swagger UI JS -->
+    <script src="https://unpkg.com/swagger-ui-dist@5.9.0/swagger-ui-bundle.js"></script>
+    <script src="https://unpkg.com/swagger-ui-dist@5.9.0/swagger-ui-standalone-preset.js"></script>
+    <script>
+        window.onload = function() {
+            const spec = {
+              "openapi": "3.0.3",
+              "info": {
+                "title": "StreamPlay API",
+                "description": "The StreamPlay Enterprise API allows developers to programmatically manage video assets, retrieve analytics, and synchronize user billing data with third-party CRMs and CMS systems.\n\n## Authentication\nAll API requests require a Bearer token. You can generate a token in your StreamPlay Dashboard under Developer Settings.",
+                "version": "1.0.0",
+                "contact": {
+                  "email": "developers@streamplay.ai"
+                }
+              },
+              "servers": [
+                {
+                  "url": "https://api.streamplay.ai/v1",
+                  "description": "Production Server"
+                }
+              ],
+              "tags": [
+                {
+                  "name": "Video Ingestion",
+                  "description": "Upload and manage video assets, subtitles, and metadata."
+                },
+                {
+                  "name": "Analytics",
+                  "description": "Retrieve real-time viewer data and drop-off metrics."
+                },
+                {
+                  "name": "Users & DRM",
+                  "description": "Manage user sessions and generate secure playback tokens."
+                }
+              ],
+              "paths": {
+                "/videos/ingest": {
+                  "post": {
+                    "tags": [
+                      "Video Ingestion"
+                    ],
+                    "summary": "Upload a new video asset",
+                    "description": "Initiates an upload pipeline for a new drama episode or movie. Automatically triggers transcoding and DRM encryption.",
+                    "requestBody": {
+                      "required": true,
+                      "content": {
+                        "application/json": {
+                          "schema": {
+                            "type": "object",
+                            "properties": {
+                              "title": {
+                                "type": "string",
+                                "example": "The Royal Crown - S01E04"
+                              },
+                              "source_url": {
+                                "type": "string",
+                                "example": "s3://my-bucket/videos/episode-4-raw.mp4"
+                              },
+                              "metadata": {
+                                "type": "object",
+                                "properties": {
+                                  "genre": {
+                                    "type": "string",
+                                    "example": "Historical Drama"
+                                  },
+                                  "language": {
+                                    "type": "string",
+                                    "example": "ko-KR"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "responses": {
+                      "202": {
+                        "description": "Ingestion pipeline started successfully",
+                        "content": {
+                          "application/json": {
+                            "schema": {
+                              "type": "object",
+                              "properties": {
+                                "job_id": {
+                                  "type": "string",
+                                  "example": "job_9x8f7a6b5c"
+                                },
+                                "status": {
+                                  "type": "string",
+                                  "example": "processing"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "400": {
+                        "description": "Invalid request payload"
+                      }
+                    }
+                  }
+                },
+                "/analytics/viewers": {
+                  "get": {
+                    "tags": [
+                      "Analytics"
+                    ],
+                    "summary": "Get viewer statistics",
+                    "description": "Returns aggregate viewer statistics for a specified time range.",
+                    "parameters": [
+                      {
+                        "name": "start_date",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                          "type": "string",
+                          "format": "date"
+                        },
+                        "example": "2026-06-01"
+                      },
+                      {
+                        "name": "end_date",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                          "type": "string",
+                          "format": "date"
+                        },
+                        "example": "2026-06-15"
+                      }
+                    ],
+                    "responses": {
+                      "200": {
+                        "description": "Analytics data retrieved",
+                        "content": {
+                          "application/json": {
+                            "schema": {
+                              "type": "object",
+                              "properties": {
+                                "total_views": {
+                                  "type": "integer",
+                                  "example": 1450230
+                                },
+                                "unique_viewers": {
+                                  "type": "integer",
+                                  "example": 890400
+                                },
+                                "average_watch_time_minutes": {
+                                  "type": "number",
+                                  "example": 42.5
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "/users/drm-token": {
+                  "post": {
+                    "tags": [
+                      "Users & DRM"
+                    ],
+                    "summary": "Generate DRM playback token",
+                    "description": "Generates a short-lived Widevine/FairPlay DRM token for secure video playback on client devices.",
+                    "requestBody": {
+                      "required": true,
+                      "content": {
+                        "application/json": {
+                          "schema": {
+                            "type": "object",
+                            "properties": {
+                              "user_id": {
+                                "type": "string",
+                                "example": "usr_102938"
+                              },
+                              "video_id": {
+                                "type": "string",
+                                "example": "vid_998877"
+                              },
+                              "device_type": {
+                                "type": "string",
+                                "example": "ios"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "responses": {
+                      "200": {
+                        "description": "Token generated successfully",
+                        "content": {
+                          "application/json": {
+                            "schema": {
+                              "type": "object",
+                              "properties": {
+                                "playback_token": {
+                                  "type": "string",
+                                  "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+                                },
+                                "expires_in": {
+                                  "type": "integer",
+                                  "example": 3600
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "components": {
+                "securitySchemes": {
+                  "bearerAuth": {
+                    "type": "http",
+                    "scheme": "bearer",
+                    "bearerFormat": "JWT"
+                  }
+                }
+              },
+              "security": [
+                {
+                  "bearerAuth": []
+                }
+              ]
+            };
+
+            const ui = SwaggerUIBundle({
+                spec: spec,
+                dom_id: '#swagger-ui',
+                deepLinking: true,
+                presets: [
+                    SwaggerUIBundle.presets.apis,
+                    SwaggerUIStandalonePreset
+                ],
+                plugins: [
+                    SwaggerUIBundle.plugins.DownloadUrl
+                ],
+                layout: "BaseLayout"
+            });
+            window.ui = ui;
+        };
+    </script>
+</body>
+</html>
