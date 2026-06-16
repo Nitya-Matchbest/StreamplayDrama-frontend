@@ -1289,7 +1289,7 @@ header.scrolled {
 }
 
 .header-section {
-  padding: 15px 0;
+  padding: 0;
 }
 
 .header-section .container {
@@ -1310,9 +1310,10 @@ header.scrolled {
 }
 
 .logo img {
-  height: 52px;
+  height: 75px;
   width: auto;
   background: transparent;
+  margin-top: 8px;
 }
 
 .nav-menu {
