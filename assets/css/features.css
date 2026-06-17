@@ -2,7 +2,7 @@
 .features-hero {
     padding-top: 140px;
     padding-bottom: 60px;
-    background-image: radial-gradient(circle at center top, #1E1233 0%, #090910 70%);
+    background-image: radial-gradient(circle at center top, #1A0000 0%, var(--background) 70%);
     border-bottom: 1px solid rgba(255,255,255,0.05);
     text-align: center;
 }
@@ -37,7 +37,7 @@
 }
 
 .feature-category {
-    background: rgba(10, 18, 50, 0.4);
+    background: var(--surface-light), 0.4);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 20px;
     padding: 40px;
@@ -47,8 +47,8 @@
 
 .feature-category:hover {
     transform: translateY(-5px);
-    border-color: rgba(130, 42, 238, 0.4);
-    box-shadow: 0 10px 30px rgba(130, 42, 238, 0.1);
+    border-color: rgba(163, 0, 0, 0.4);
+    box-shadow: 0 10px 30px rgba(163, 0, 0, 0.1);
 }
 
 .fc-header {
@@ -63,7 +63,7 @@
 .fc-icon {
     width: 48px;
     height: 48px;
-    background: linear-gradient(135deg, #571b86, #822AEE);
+    background: linear-gradient(135deg, var(--primary), var(--accent));
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -106,7 +106,7 @@
 .fc-item svg {
     width: 18px;
     height: 18px;
-    color: #c084fc;
+    color: var(--primary);
     flex-shrink: 0;
     margin-top: 3px;
 }
@@ -116,8 +116,8 @@
     max-width: 1200px;
     margin: 0 auto 80px;
     padding: 60px;
-    background: linear-gradient(180deg, rgba(20, 15, 40, 0.8) 0%, rgba(10, 18, 50, 0.5) 100%);
-    border: 1px solid rgba(130, 42, 238, 0.2);
+    background: linear-gradient(180deg, rgba(20, 15, 40, 0.8) 0%, var(--surface-light), 0.5) 100%);
+    border: 1px solid rgba(163, 0, 0, 0.2);
     border-radius: 24px;
 }
 
@@ -150,7 +150,7 @@
     font-size: 1.3rem;
     color: #fff;
     margin-bottom: 20px;
-    border-left: 4px solid #822AEE;
+    border-left: 4px solid var(--primary);
     padding-left: 10px;
 }
 
@@ -170,7 +170,7 @@
 
 .ts-card li::before {
     content: "•";
-    color: #822AEE;
+    color: var(--primary);
     font-size: 1.5rem;
     line-height: 1;
 }
@@ -178,7 +178,7 @@
 .ts-link {
     display: inline-block;
     margin-top: 20px;
-    color: #c084fc;
+    color: var(--primary);
     text-decoration: none;
     font-weight: 600;
     transition: color 0.3s;
@@ -192,7 +192,7 @@
 .download-banner {
     max-width: 1000px;
     margin: 0 auto;
-    background: linear-gradient(90deg, #571b86, #2d0a4e);
+    background: linear-gradient(90deg, var(--primary), #8A0000);
     border-radius: 20px;
     padding: 50px;
     display: flex;
@@ -216,7 +216,7 @@
 
 .btn-white {
     background: #fff;
-    color: #1E1233;
+    color: #1A0000;
     padding: 16px 32px;
     border-radius: 8px;
     font-weight: 700;

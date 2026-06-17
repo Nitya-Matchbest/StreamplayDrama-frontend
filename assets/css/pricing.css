@@ -2,7 +2,7 @@
 .pricing-hero {
     padding-top: 140px;
     padding-bottom: 60px;
-    background-image: radial-gradient(circle at center top, #1E1233 0%, #090910 70%);
+    background-image: radial-gradient(circle at center top, #1A0000 0%, var(--background) 70%);
     border-bottom: 1px solid rgba(255,255,255,0.05);
     text-align: center;
 }
@@ -38,7 +38,7 @@
 
 /* Pricing Card */
 .pricing-card {
-    background: rgba(10, 18, 50, 0.5);
+    background: var(--surface-light), 0.5);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
     padding: 40px 30px;
@@ -51,14 +51,14 @@
 
 .pricing-card:hover {
     transform: translateY(-10px);
-    border-color: rgba(130, 42, 238, 0.4);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 40px rgba(130, 42, 238, 0.15);
+    border-color: rgba(163, 0, 0, 0.4);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 40px rgba(163, 0, 0, 0.15);
 }
 
 .pricing-card.popular {
-    border-color: rgba(130, 42, 238, 0.6);
-    background: linear-gradient(180deg, rgba(20, 15, 40, 0.8) 0%, rgba(10, 18, 50, 0.5) 100%);
-    box-shadow: 0 0 30px rgba(130, 42, 238, 0.1);
+    border-color: rgba(163, 0, 0, 0.6);
+    background: linear-gradient(180deg, rgba(20, 15, 40, 0.8) 0%, var(--surface-light), 0.5) 100%);
+    box-shadow: 0 0 30px rgba(163, 0, 0, 0.1);
 }
 
 .pricing-card.popular::before {
@@ -69,6 +69,7 @@
     right: 0;
     height: 4px;
     background: linear-gradient(90deg, #571b86, #822AEE, #571b86);
+    display: none;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
 }
@@ -78,7 +79,7 @@
     top: -15px;
     left: 50%;
     transform: translateX(-50%);
-    background: linear-gradient(90deg, #571b86, #822AEE);
+    background: linear-gradient(90deg, var(--primary), var(--accent));
     color: #fff;
     padding: 6px 16px;
     border-radius: 20px;
@@ -86,7 +87,7 @@
     font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;
-    box-shadow: 0 4px 10px rgba(130, 42, 238, 0.4);
+    box-shadow: 0 4px 10px rgba(163, 0, 0, 0.4);
 }
 
 .pc-name {
@@ -140,9 +141,9 @@
     justify-content: center;
     width: 24px;
     height: 24px;
-    background: rgba(130, 42, 238, 0.2);
+    background: rgba(163, 0, 0, 0.2);
     border-radius: 50%;
-    color: #c084fc;
+    color: var(--primary);
     flex-shrink: 0;
     margin-top: 2px;
 }
@@ -156,7 +157,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(90deg, #571b86, #3d0866);
+    background: linear-gradient(90deg, var(--primary), #8A0000);
     color: #fff;
     padding: 16px;
     border-radius: 8px;
@@ -168,8 +169,8 @@
 }
 
 .btn-primary-block:hover {
-    background: linear-gradient(90deg, #822AEE, #571b86);
-    box-shadow: 0 10px 20px rgba(130, 42, 238, 0.3);
+    background: linear-gradient(90deg, var(--accent), var(--primary));
+    box-shadow: 0 10px 20px rgba(163, 0, 0, 0.3);
     color: #fff;
 }
 
@@ -196,7 +197,7 @@
 /* Free Trial / Demo Banner */
 .demo-banner {
     background: linear-gradient(135deg, #151a21 0%, #0a1232 100%);
-    border: 1px solid rgba(130, 42, 238, 0.2);
+    border: 1px solid rgba(163, 0, 0, 0.2);
     border-radius: 20px;
     padding: 50px;
     max-width: 1000px;
