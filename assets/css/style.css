@@ -5,32 +5,36 @@
 
 /* CSS Variables - Netflix-Inspired Color Palette */
 :root {
-  /* Primary Colors */
-  --primary: #A30000;
-  --primary-hover: #7A0000;
+  /* Primary Colors (Text) */
+  --primary: #822AEE;
+  --primary-hover: #6a21c2;
+  
+  /* Button Gradient */
+  --btn-grad-1: #581C87;
+  --btn-grad-2: #3B0764;
   
   /* Backgrounds */
-  --background: #0D0D1A;
-  --surface: #1A1A2E;
-  --surface-light: #16213E;
-  --card-bg: #1A1A2E;
+  --background: #010F29;
+  --surface: #0A1232;
+  --surface-light: #032559;
+  --card-bg: #0A1232;
   
   /* Text Colors */
   --text-primary: #FFFFFF;
-  --text-secondary: #B3B3B3;
+  --text-secondary: #FFFFFF;
   --text-muted: #6B6B6B;
   
-  /* Accent Colors */
-  --accent: #F5A623;
-  --accent-hover: #D98E1A;
+  /* Accent Colors (Merged into Purple) */
+  --accent: #822AEE;
+  --accent-hover: #6a21c2;
   
   /* Borders & Effects */
-  --border: #2A2A3E;
-  --border-light: #16213E;
-  --shadow: rgba(163, 0, 0, 0.25);
-  --shadow-gold: rgba(245, 166, 35, 0.19);
-  --glow-red: rgba(163, 0, 0, 0.4);
-  --glow-gold: rgba(245, 166, 35, 0.3);
+  --border: rgba(130, 42, 238, 0.2);
+  --border-light: rgba(130, 42, 238, 0.1);
+  --shadow: rgba(130, 42, 238, 0.25);
+  --shadow-gold: rgba(130, 42, 238, 0.19);
+  --glow-red: rgba(130, 42, 238, 0.4);
+  --glow-gold: rgba(130, 42, 238, 0.3);
 }
 
 /* Reset & Base */
@@ -226,9 +230,7 @@ ul {
   left: -2px;
   right: -2px;
   bottom: -2px;
-  background: linear-gradient(135deg, 
-    var(--primary) 0%, 
-    var(--accent) 100%);
+  background: linear-gradient(90deg, var(--btn-grad-1) 0%, var(--btn-grad-2) 100%);
   border-radius: 20px;
   opacity: 0;
   z-index: -1;
@@ -241,7 +243,7 @@ ul {
 
 .ownership-card:hover {
   transform: translateY(-6px) scale(1.01);
-  border-color: #A30000;
+  border-color: transparent;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 
@@ -257,8 +259,8 @@ ul {
 .card-icon {
   width: 54px;
   height: 54px;
-  background: rgba(163, 0, 0, 0.15);
-  border: 1.5px solid rgba(163, 0, 0, 0.3);
+  background: rgba(130, 42, 238, 0.15);
+  border: 1.5px solid rgba(130, 42, 238, 0.3);
   border-radius: 14px;
   display: flex;
   align-items: center;
@@ -278,22 +280,22 @@ ul {
 }
 
 .ownership-card:hover .card-icon {
-  background: rgba(163, 0, 0, 0.28);
-  border-color: rgba(163, 0, 0, 0.6);
+  background: linear-gradient(90deg, var(--btn-grad-1) 0%, var(--btn-grad-2) 100%);
+  border-color: rgba(130, 42, 238, 0.6);
   transform: scale(1.05);
 }
 
 .card-icon svg {
   width: 30px;
   height: 30px;
-  color: #FF5252;
+  color: #FFFFFF;
   transition: all 0.4s ease;
   z-index: 1;
   position: relative;
 }
 
 .ownership-card:hover .card-icon svg {
-  color: #FF8080;
+  color: #FFFFFF;
   transform: scale(1.08);
 }
 
@@ -364,7 +366,7 @@ ul {
 }
 
 .section_container.sip-bg.blackbg .feature-tag:hover {
-  border-color: var(--primary) !important;
+  border-color: transparent !important;
   color: var(--primary) !important;
   cursor: pointer;
 }
@@ -432,7 +434,7 @@ ul {
 .section_container.sip-bg.blackbg .drama-cta-link:hover,
 .section_container.sip-bg.blackbg button:hover,
 .section_container.sip-bg.blackbg .button:hover {
-  border-color: var(--primary) !important;
+  border-color: transparent !important;
   background: transparent !important;
 }
 
@@ -755,7 +757,7 @@ ul {
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, var(--primary), var(--accent));
+  background: linear-gradient(90deg, var(--btn-grad-1) 0%, var(--btn-grad-2) 100%);
   border-radius: 2px;
   transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -953,7 +955,7 @@ ul {
   top: 0;
   bottom: 0;
   width: 4px;
-  background: linear-gradient(180deg, var(--primary), var(--accent));
+  background: linear-gradient(90deg, var(--btn-grad-1) 0%, var(--btn-grad-2) 100%);
   opacity: 0;
   transition: opacity 0.5s ease;
 }
@@ -1288,7 +1290,7 @@ header.header {
   top: 0;
   left: 0;
   right: 0;
-  background: rgba(13, 13, 26, 0.95);
+  background: #0C0C0C;
   backdrop-filter: blur(10px);
   z-index: 1000;
   border-bottom: 1px solid var(--border);
@@ -1325,6 +1327,8 @@ header.scrolled {
   width: auto;
   background: transparent;
   margin-top: 8px;
+  transform: scale(1.3);
+  transform-origin: left center;
 }
 
 .nav-menu {
@@ -1402,19 +1406,19 @@ header.scrolled {
 }
 
 #sales-header {
-  background: var(--primary);
+  background: linear-gradient(90deg, var(--btn-grad-1) 0%, var(--btn-grad-2) 100%); border-color: transparent;
   color: var(--text-primary);
   padding: 12px 28px;
   border-radius: 8px;
   font-weight: 600;
   font-size: 16px;
-  border: 2px solid var(--primary);
+  border: 2px solid transparent;
   transition: all 0.3s ease;
 }
 
 #sales-header:hover {
-  background: var(--primary-hover);
-  border-color: var(--primary-hover);
+  background: linear-gradient(90deg, var(--btn-grad-1) 0%, var(--btn-grad-2) 100%); color: var(--text-primary);
+  border-color: transparent;
   transform: translateY(-2px);
   box-shadow: 0 8px 20px var(--shadow);
 }
@@ -1487,7 +1491,7 @@ header.scrolled {
 }
 
 .hero-title .highlight-text {
-  background: linear-gradient(135deg, var(--primary) 0%, #FFAE00 100%);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -1517,7 +1521,7 @@ header.scrolled {
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 25px 55px rgba(0, 0, 0, 0.7), 
-              0 0 40px rgba(163, 0, 0, 0.15);
+              0 0 40px rgba(130, 42, 238, 0.15);
   transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s ease;
 }
 
@@ -1530,7 +1534,7 @@ header.scrolled {
   position: absolute;
   width: 90%;
   height: 85%;
-  background: radial-gradient(circle, rgba(163, 0, 0, 0.28) 0%, rgba(245, 166, 35, 0.06) 50%, transparent 100%);
+  background: radial-gradient(circle, rgba(130, 42, 238, 0.28) 0%, rgba(130, 42, 238, 0.06) 50%, transparent 100%);
   top: 7.5%;
   left: 5%;
   filter: blur(60px);
@@ -1579,10 +1583,10 @@ header.scrolled {
 
 .hero-bullet-grid li:hover {
   transform: translateY(-3px);
-  border-color: rgba(163, 0, 0, 0.35);
-  background: rgba(163, 0, 0, 0.03);
+  border-color: rgba(130, 42, 238, 0.35);
+  background: rgba(130, 42, 238, 0.03);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4), 
-              0 0 20px rgba(163, 0, 0, 0.05);
+              0 0 20px rgba(130, 42, 238, 0.05);
 }
 
 .hero-bullet-grid li .bullet-icon {
@@ -1591,8 +1595,8 @@ header.scrolled {
   justify-content: center;
   width: 26px;
   height: 26px;
-  background: rgba(163, 0, 0, 0.18);
-  border: 1px solid rgba(163, 0, 0, 0.4);
+  background: rgba(130, 42, 238, 0.18);
+  border: 1px solid rgba(130, 42, 238, 0.4);
   border-radius: 50%;
   color: var(--primary);
   font-size: 13px;
@@ -1705,13 +1709,13 @@ header.scrolled {
 /* Buttons */
 .button {
   display: inline-block;
-  background: var(--primary);
+  background: linear-gradient(90deg, var(--btn-grad-1) 0%, var(--btn-grad-2) 100%); border-color: transparent;
   color: var(--text-primary);
   padding: 14px 32px;
   border-radius: 8px;
   font-weight: 600;
   font-size: 16px;
-  border: 2px solid var(--primary);
+  border: 2px solid transparent;
   cursor: pointer;
   transition: all 0.3s ease;
   text-align: center;
@@ -1719,8 +1723,8 @@ header.scrolled {
 }
 
 .button:hover {
-  background: var(--primary-hover);
-  border-color: var(--primary-hover);
+  background: linear-gradient(90deg, var(--btn-grad-1) 0%, var(--btn-grad-2) 100%); color: var(--text-primary);
+  border-color: transparent;
   transform: translateY(-3px);
   box-shadow: 0 8px 25px var(--shadow);
 }
@@ -1856,7 +1860,7 @@ header.scrolled {
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+  background: linear-gradient(90deg, var(--btn-grad-1) 0%, var(--btn-grad-2) 100%);
   transform: scaleX(0);
   transition: transform 0.4s ease;
 }
@@ -1946,7 +1950,7 @@ a.link {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: var(--primary);
+  background: linear-gradient(90deg, var(--btn-grad-1) 0%, var(--btn-grad-2) 100%); border-color: transparent;
   color: var(--text-primary);
   padding: 15px 30px;
   border-radius: 8px;
@@ -1957,7 +1961,7 @@ a.link {
 }
 
 a.link:hover {
-  background: var(--primary-hover);
+  background: linear-gradient(90deg, var(--btn-grad-1) 0%, var(--btn-grad-2) 100%); color: var(--text-primary);
   transform: translateY(-3px);
   box-shadow: 0 8px 25px var(--shadow);
 }
@@ -2084,10 +2088,10 @@ a.link:hover svg {
 
 /* Footer */
 .footer {
-  background: #090911;
+  background: #0C0C0C;
   padding: 80px 0 40px;
-  border-top: 1px solid rgba(163, 0, 0, 0.2);
-  box-shadow: 0 -10px 40px rgba(163, 0, 0, 0.05);
+  border-top: 1px solid rgba(130, 42, 238, 0.2);
+  box-shadow: 0 -10px 40px rgba(130, 42, 238, 0.05);
   position: relative;
   overflow: hidden;
 }
@@ -2100,7 +2104,7 @@ a.link:hover svg {
   transform: translateX(-50%);
   width: 800px;
   height: 240px;
-  background: radial-gradient(circle, rgba(163, 0, 0, 0.15) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(130, 42, 238, 0.15) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
@@ -2132,7 +2136,7 @@ a.link:hover svg {
   left: 0;
   width: 40px;
   height: 3px;
-  background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+  background: linear-gradient(90deg, var(--btn-grad-1) 0%, var(--btn-grad-2) 100%);
   border-radius: 2px;
   transition: width 0.3s ease;
 }
@@ -2187,7 +2191,7 @@ a.link:hover svg {
 
 .platform-badge:hover {
   color: #FFFFFF;
-  background: rgba(163, 0, 0, 0.2);
+  background: rgba(130, 42, 238, 0.2);
   border-color: var(--primary);
   transform: translateY(-1px);
 }
@@ -2388,7 +2392,7 @@ a.link:hover svg {
   right: 30px;
   width: 50px;
   height: 50px;
-  background: var(--primary);
+  background: linear-gradient(90deg, var(--btn-grad-1) 0%, var(--btn-grad-2) 100%);
   border: none;
   border-radius: 50%;
   cursor: pointer;
@@ -2693,7 +2697,7 @@ a.link:hover svg {
 }
 
 .lc-card:hover .lc-thumb {
-  box-shadow: 0 10px 35px rgba(163, 0, 0, 0.3), 0 0 0 2px var(--primary);
+  box-shadow: 0 10px 35px rgba(130, 42, 238, 0.3), 0 0 0 2px var(--primary);
 }
 
 .lc-thumb img {
@@ -2732,14 +2736,14 @@ a.link:hover svg {
 .lc-play {
   width: 44px;
   height: 44px;
-  background: rgba(163, 0, 0, 0.9);
+  background: rgba(130, 42, 238, 0.9);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   transform: scale(0.7);
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 20px rgba(163, 0, 0, 0.5);
+  box-shadow: 0 4px 20px rgba(130, 42, 238, 0.5);
 }
 
 .lc-card:hover .lc-play {
@@ -2941,7 +2945,7 @@ a.link:hover svg {
 
 .carousel-btn:hover svg {
   color: var(--accent);
-  filter: drop-shadow(0 0 4px rgba(245, 166, 35, 0.5));
+  filter: drop-shadow(0 0 4px rgba(130, 42, 238, 0.5));
 }
 
 /* Carousel Wrapper */
@@ -3185,9 +3189,9 @@ a.link:hover svg {
 
 .drama-dot.active {
   width: 46px;
-  background: linear-gradient(90deg, #A30000 0%, #F5A623 100%);
+  background: linear-gradient(90deg, var(--primary-hover) 0%, var(--primary) 100%);
   transform: scaleY(1.6);
-  box-shadow: 0 0 10px rgba(245, 166, 35, 0.5);
+  box-shadow: 0 0 10px rgba(130, 42, 238, 0.5);
 }
 
 .drama-dot:hover:not(.active) {
@@ -3447,7 +3451,7 @@ a.link:hover svg {
   display: flex;
   align-items: center;
   padding: 50px 0;
-  background: radial-gradient(circle at 50% 50%, rgba(163, 0, 0, 0.12) 0%, rgba(245, 166, 35, 0.05) 50%, var(--background) 100%) !important;
+  background: radial-gradient(circle at 50% 50%, rgba(130, 42, 238, 0.12) 0%, rgba(130, 42, 238, 0.05) 50%, var(--background) 100%) !important;
 }
 
 /* Outer row: arrow | carousel | arrow */
@@ -3484,7 +3488,7 @@ a.link:hover svg {
   transform: translateX(100%) scale(0.9);
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   background: linear-gradient(145deg, rgba(26, 26, 46, 0.9) 0%, rgba(13, 13, 26, 0.95) 100%);
-  border: 1px solid rgba(245, 166, 35, 0.15);
+  border: 1px solid rgba(130, 42, 238, 0.15);
   border-radius: 20px;
   overflow: hidden;
   display: flex;
@@ -3498,8 +3502,8 @@ a.link:hover svg {
   visibility: visible;
   transform: translateX(0) scale(1);
   z-index: 2;
-  border-color: rgba(245, 166, 35, 0.4);
-  box-shadow: 0 20px 50px rgba(163, 0, 0, 0.25), 0 0 30px rgba(245, 166, 35, 0.12);
+  border-color: rgba(130, 42, 238, 0.4);
+  box-shadow: 0 20px 50px rgba(130, 42, 238, 0.25), 0 0 30px rgba(130, 42, 238, 0.12);
 }
 
 .feature-carousel-card.prev {
@@ -3565,8 +3569,8 @@ a.link:hover svg {
   display: none !important;
   width: 50px;
   height: 50px;
-  background: linear-gradient(135deg, rgba(163, 0, 0, 0.2) 0%, rgba(245, 166, 35, 0.2) 100%);
-  border: 1.5px solid rgba(245, 166, 35, 0.4);
+  background: linear-gradient(135deg, rgba(130, 42, 238, 0.2) 0%, rgba(130, 42, 238, 0.2) 100%);
+  border: 1.5px solid rgba(130, 42, 238, 0.4);
   border-radius: 14px;
   align-items: center;
   justify-content: center;
@@ -3574,7 +3578,7 @@ a.link:hover svg {
   opacity: 0;
   transform: translateY(20px);
   transition: all 0.6s ease;
-  box-shadow: 0 0 15px rgba(245, 166, 35, 0.15);
+  box-shadow: 0 0 15px rgba(130, 42, 238, 0.15);
 }
 
 .feature-carousel-card.active .feature-carousel-icon {
@@ -3591,7 +3595,7 @@ a.link:hover svg {
 .feature-carousel-icon svg {
   width: 24px;
   height: 24px;
-  color: #F5A623;
+  color: var(--primary);
 }
 
 .feature-carousel-content h3 {
@@ -3650,11 +3654,11 @@ a.link:hover svg {
   padding: 0;
 }
 
-/* Active dot = #A30000 solid red bar */
+/* Active dot = var(--primary-hover) solid red bar */
 .features-dot.active {
-  background: linear-gradient(90deg, #A30000, #F5A623);
+  background: linear-gradient(90deg, var(--primary-hover), var(--primary));
   transform: scaleY(1.4);
-  box-shadow: 0 0 8px rgba(245, 166, 35, 0.5);
+  box-shadow: 0 0 8px rgba(130, 42, 238, 0.5);
 }
 
 .features-dot:hover:not(.active) {
@@ -3670,25 +3674,25 @@ a.link:hover svg {
 .features-arrow {
   width: 40px;
   height: 40px;
-  background: rgba(245, 166, 35, 0.05);
-  border: 1.5px solid rgba(245, 166, 35, 0.4);
+  background: rgba(130, 42, 238, 0.05);
+  border: 1.5px solid rgba(130, 42, 238, 0.4);
   border-radius: 50%;
-  color: #F5A623;
+  color: var(--primary);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
   flex-shrink: 0;
-  box-shadow: 0 0 10px rgba(245, 166, 35, 0.05);
+  box-shadow: 0 0 10px rgba(130, 42, 238, 0.05);
 }
 
 .features-arrow:hover {
-  background: #F5A623;
-  border-color: #F5A623;
+  background: var(--primary);
+  border-color: var(--primary);
   color: #0d0d1a;
   transform: scale(1.08);
-  box-shadow: 0 0 18px rgba(245, 166, 35, 0.45);
+  box-shadow: 0 0 18px rgba(130, 42, 238, 0.45);
 }
 
 .features-arrow svg {
@@ -3872,15 +3876,15 @@ a.link:hover svg {
 }
 
 .comparison-table .highlight-col {
-  background: rgba(163, 0, 0, 0.08);
-  border-left: 1.5px solid rgba(163, 0, 0, 0.25);
-  border-right: 1.5px solid rgba(163, 0, 0, 0.25);
+  background: rgba(130, 42, 238, 0.08);
+  border-left: 1.5px solid rgba(130, 42, 238, 0.25);
+  border-right: 1.5px solid rgba(130, 42, 238, 0.25);
   text-align: center;
   width: 25%;
 }
 
 .comparison-table th.highlight-col {
-  background: rgba(163, 0, 0, 0.15);
+  background: rgba(130, 42, 238, 0.15);
   color: #FFFFFF;
 }
 
@@ -3895,11 +3899,11 @@ a.link:hover svg {
 }
 
 .comparison-table .text-primary {
-  color: #FF5252 !important;
+  color: var(--primary) !important;
 }
 
 .comparison-table .text-green {
-  color: #00E676 !important;
+  color: #FFFFFF !important;
 }
 
 /* Calculator Section */
@@ -3929,7 +3933,7 @@ a.link:hover svg {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(163, 0, 0, 0.05) 0%, transparent 60%);
+  background: radial-gradient(circle, rgba(130, 42, 238, 0.05) 0%, transparent 60%);
   pointer-events: none;
   z-index: 0;
 }
@@ -3963,11 +3967,11 @@ a.link:hover svg {
 .slider-value {
   font-size: 20px;
   font-weight: 800;
-  color: var(--accent);
-  background: rgba(245, 166, 35, 0.08);
+  color: #FFFFFF;
+  background: rgba(130, 42, 238, 0.08);
   padding: 4px 14px;
   border-radius: 8px;
-  border: 1px solid rgba(245, 166, 35, 0.2);
+  border: 1px solid rgba(130, 42, 238, 0.2);
 }
 
 .calc-slider {
@@ -3992,7 +3996,7 @@ a.link:hover svg {
   height: 20px;
   width: 20px;
   border-radius: 50%;
-  background: var(--primary);
+  background: linear-gradient(90deg, var(--btn-grad-1) 0%, var(--btn-grad-2) 100%);
   cursor: pointer;
   -webkit-appearance: none;
   margin-top: -7px;
@@ -4003,7 +4007,7 @@ a.link:hover svg {
 
 .calc-slider::-webkit-slider-thumb:hover {
   transform: scale(1.2);
-  background: var(--accent);
+  background: linear-gradient(90deg, var(--btn-grad-1) 0%, var(--btn-grad-2) 100%);
   box-shadow: 0 0 10px var(--glow-gold);
 }
 
@@ -4056,7 +4060,7 @@ a.link:hover svg {
 }
 
 .text-glow-amber {
-  color: var(--accent);
+  color: #FFFFFF;
   text-shadow: 0 0 15px var(--glow-gold);
 }
 
@@ -4073,8 +4077,8 @@ a.link:hover svg {
   position: absolute;
   top: -12px;
   left: 15px;
-  background: #00E676;
-  color: #000000;
+  background: linear-gradient(90deg, var(--btn-grad-1) 0%, var(--btn-grad-2) 100%);
+  color: #FFFFFF;
   font-size: 10px;
   font-weight: 800;
   text-transform: uppercase;
@@ -4124,7 +4128,7 @@ a.link:hover svg {
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+  background: linear-gradient(90deg, var(--btn-grad-1) 0%, var(--btn-grad-2) 100%);
   display: none;
   opacity: 0;
   transition: opacity 0.4s ease;
@@ -4143,9 +4147,7 @@ a.link:hover svg {
 .roadmap-badge-num {
   font-size: 40px;
   font-weight: 900;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--primary);
   margin-bottom: 15px;
   line-height: 1;
   opacity: 0.85;
@@ -4153,14 +4155,14 @@ a.link:hover svg {
 
 .roadmap-card h3 {
   font-size: 18px;
-  color: var(--text-primary);
+  color: #FFFFFF;
   margin-bottom: 12px;
 }
 
 .roadmap-card p {
   font-size: 14px;
   line-height: 1.6;
-  color: var(--text-secondary);
+  color: #D1D5DB;
   margin: 0;
 }
 
@@ -4172,7 +4174,7 @@ a.link:hover svg {
 }
 
 .cta-banner-card {
-  background: linear-gradient(135deg, var(--surface) 0%, rgba(163, 0, 0, 0.15) 100%);
+  background: linear-gradient(135deg, var(--surface) 0%, rgba(130, 42, 238, 0.15) 100%);
   border: 1px solid var(--border);
   border-radius: 24px;
   padding: 60px 40px;
@@ -4186,7 +4188,7 @@ a.link:hover svg {
   position: absolute;
   width: 300px;
   height: 300px;
-  background: radial-gradient(circle, rgba(163, 0, 0, 0.2) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(130, 42, 238, 0.2) 0%, transparent 70%);
   border-radius: 50%;
   top: 50%;
   left: 50%;
@@ -4353,4 +4355,10 @@ a.link:hover svg {
 .nav-dropdown-content a:hover {
     background-color: rgba(130, 42, 238, 0.2);
     color: #fff;
+}
+
+
+/* Platform Ownership Section Background */
+.sip-bg.hover-sec {
+  background: linear-gradient(rgba(1, 15, 41, 0.92), rgba(1, 15, 41, 0.92)), url('../images/image 33.jpg') no-repeat center center / cover !important;
 }

@@ -340,15 +340,19 @@ document.addEventListener('DOMContentLoaded', function() {
     if (featuresCards.length === 0) return;
 
     function showFeature(index) {
-        featuresCards.forEach(card => card.classList.remove('active', 'prev'));
+        featuresCards.forEach((card, i) => {
+            if (i < index) {
+                card.classList.remove('active');
+                card.classList.add('prev');
+            } else if (i > index) {
+                card.classList.remove('active', 'prev');
+            } else {
+                card.classList.remove('prev');
+                card.classList.add('active');
+            }
+        });
+
         featuresDots.forEach(dot  => dot.classList.remove('active'));
-
-        const prevIndex = currentFeature;
-        if (prevIndex !== index) {
-            featuresCards[prevIndex].classList.add('prev');
-        }
-
-        featuresCards[index].classList.add('active');
         featuresDots[index].classList.add('active');
         currentFeature = index;
     }

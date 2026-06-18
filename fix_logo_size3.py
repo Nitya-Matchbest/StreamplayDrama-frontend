@@ -1,25 +1,20 @@
-import glob
+import os
 
-for filename in glob.glob('*.html'):
-    with open(filename, 'r', encoding='utf-8') as f:
-        content = f.read()
-    
-    # We want to replace the height 90px and transform with height 120px and flex centering
-    old_str1 = 'style="height: 90px; width: auto; transform: translateY(8px);" src="assets/images/new-logo-transparent.png"'
-    new_str1 = 'style="height: 130px; width: auto; vertical-align: middle; margin-top: 5px;" src="assets/images/new-logo-transparent.png"'
-    
-    old_str2 = 'style="height: 90px; width: auto;" src="assets/images/new-logo-transparent.png"'
-    new_str2 = 'style="height: 130px; width: auto; vertical-align: middle; margin-top: 5px;" src="assets/images/new-logo-transparent.png"'
-    
-    changed = False
-    if old_str1 in content:
-        content = content.replace(old_str1, new_str1)
-        changed = True
-    if old_str2 in content:
-        content = content.replace(old_str2, new_str2)
-        changed = True
+files = [f for f in os.listdir('.') if f.endswith('.html')]
+
+for file_path in files:
+    with open(file_path, 'r', encoding='utf-8') as f:
+        text = f.read()
         
-    if changed:
-        with open(filename, 'w', encoding='utf-8') as f:
-            f.write(content)
-        print('Updated', filename)
+    original = text
+
+    # Update navbar logo size
+    text = text.replace(
+        '<img height="150" style="width: auto;" src="assets/images/new-logo-transparent.png" class="fixed-logo"',
+        '<img height="180" style="width: auto;" src="assets/images/new-logo-transparent.png" class="fixed-logo"'
+    )
+
+    if original != text:
+        with open(file_path, 'w', encoding='utf-8') as f:
+            f.write(text)
+        print(f'Updated {file_path}')

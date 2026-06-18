@@ -1798,8 +1798,8 @@
 
   /* Active card highlight */
   .ownership-card.carousel-active {
-    border-color: rgba(163, 0, 0, 0.55) !important;
-    box-shadow: 0 8px 28px rgba(163, 0, 0, 0.22) !important;
+    border-color: rgba(130, 42, 238, 0.55) !important;
+    box-shadow: 0 8px 28px rgba(130, 42, 238, 0.22) !important;
   }
 
   /* Show ownership nav on mobile — identical style to drama carousel dots */
@@ -1836,9 +1836,9 @@
   /* Active dot — identical to .drama-dot.active */
   .ownership-dot.active {
     width: 38px;
-    background: linear-gradient(90deg, #A30000 0%, #F5A623 100%);
+    background: linear-gradient(90deg, var(--primary-hover) 0%, var(--primary) 100%);
     transform: scaleY(1.6);
-    box-shadow: 0 0 10px rgba(245, 166, 35, 0.5);
+    box-shadow: 0 0 10px rgba(130, 42, 238, 0.5);
   }
 
   .ownership-dot:hover:not(.active) {

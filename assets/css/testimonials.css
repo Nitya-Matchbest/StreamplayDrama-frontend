@@ -1,7 +1,7 @@
 /* Testimonials Main Layout */
 .testimonials-main {
     padding: 80px 0 100px;
-    background-color: #07070B; /* Match site dark theme */
+    background-color: var(--background); /* Match site dark theme */
     min-height: 50vh;
 }
 
