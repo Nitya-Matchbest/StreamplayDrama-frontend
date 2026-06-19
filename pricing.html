@@ -167,28 +167,64 @@
             </div>
 
             <!-- FAQ Section -->
-            <div class="faq-section">
-                <h3 class="faq-title">Frequently Asked Questions</h3>
+            <div class="faq-section" style="display: flex; flex-direction: column; gap: 15px;">
+                <h3 class="faq-title" style="margin-bottom: 25px;">Frequently Asked Questions</h3>
                 
-                <div class="faq-item">
-                    <div class="faq-question">What does "Zero Revenue Sharing" mean?</div>
-                    <div class="faq-answer">It means exactly what it sounds like. We charge a flat licensing fee for our platform software. You keep 100% of the money you make from subscriptions (SVOD), ads (AVOD), and pay-per-view (TVOD). No hidden cuts.</div>
-                </div>
+                <details style="background: #0A1232; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; overflow: hidden; transition: all 0.3s;">
+                    <summary style="padding: 24px 30px; font-size: 1.2rem; font-weight: 600; color: #fff; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; outline: none;">
+                        What does "Zero Revenue Sharing" mean?
+                        <span style="color: #fff; font-size: 1.5rem; line-height: 1;">+</span>
+                    </summary>
+                    <div style="padding: 0 30px 24px; color: #9CA3AF; font-size: 1.05rem; line-height: 1.6; border-top: 1px solid rgba(255,255,255,0.05); margin-top: -5px; padding-top: 20px;">
+                        It means exactly what it sounds like. We charge a flat licensing fee for our platform software. You keep 100% of the money you make from subscriptions (SVOD), ads (AVOD), and pay-per-view (TVOD). No hidden cuts.
+                    </div>
+                </details>
                 
-                <div class="faq-item">
-                    <div class="faq-question">Can I test the platform before committing?</div>
-                    <div class="faq-answer">Yes! We offer a full-featured Self-Serve Demo Environment and a 14-Day Free Trial sandbox. You can upload content, organize multi-season series, and preview how it looks on a live streaming app.</div>
-                </div>
+                <details style="background: #0A1232; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; overflow: hidden; transition: all 0.3s;">
+                    <summary style="padding: 24px 30px; font-size: 1.2rem; font-weight: 600; color: #fff; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; outline: none;">
+                        Can I test the platform before committing?
+                        <span style="color: #fff; font-size: 1.5rem; line-height: 1;">+</span>
+                    </summary>
+                    <div style="padding: 0 30px 24px; color: #9CA3AF; font-size: 1.05rem; line-height: 1.6; border-top: 1px solid rgba(255,255,255,0.05); margin-top: -5px; padding-top: 20px;">
+                        Yes! We offer a full-featured Self-Serve Demo Environment and a 14-Day Free Trial sandbox. You can upload content, organize multi-season series, and preview how it looks on a live streaming app.
+                    </div>
+                </details>
 
-                <div class="faq-item">
-                    <div class="faq-question">How long does it take to launch?</div>
-                    <div class="faq-answer">Because our OTT aggregator platform is pre-built, we can deploy a fully white-labeled version of the super app—with your branding, custom integrations, and 12+ content sources—in just 4 to 6 weeks.</div>
-                </div>
+                <details style="background: #0A1232; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; overflow: hidden; transition: all 0.3s;">
+                    <summary style="padding: 24px 30px; font-size: 1.2rem; font-weight: 600; color: #fff; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; outline: none;">
+                        How long does it take to launch?
+                        <span style="color: #fff; font-size: 1.5rem; line-height: 1;">+</span>
+                    </summary>
+                    <div style="padding: 0 30px 24px; color: #9CA3AF; font-size: 1.05rem; line-height: 1.6; border-top: 1px solid rgba(255,255,255,0.05); margin-top: -5px; padding-top: 20px;">
+                        Because our OTT aggregator platform is pre-built, we can deploy a fully white-labeled version of the super app—with your branding, custom integrations, and 12+ content sources—in just 4 to 6 weeks.
+                    </div>
+                </details>
 
-                <div class="faq-item">
-                    <div class="faq-question">Do I own the source code?</div>
-                    <div class="faq-answer">Absolutely. Our True White-Label model means you retain full intellectual property ownership of the resulting application code, branding, and customizations.</div>
-                </div>
+                <details style="background: #0A1232; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; overflow: hidden; transition: all 0.3s;">
+                    <summary style="padding: 24px 30px; font-size: 1.2rem; font-weight: 600; color: #fff; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; outline: none;">
+                        Do I own the source code?
+                        <span style="color: #fff; font-size: 1.5rem; line-height: 1;">+</span>
+                    </summary>
+                    <div style="padding: 0 30px 24px; color: #9CA3AF; font-size: 1.05rem; line-height: 1.6; border-top: 1px solid rgba(255,255,255,0.05); margin-top: -5px; padding-top: 20px;">
+                        Absolutely. Our True White-Label model means you retain full intellectual property ownership of the resulting application code, branding, and customizations.
+                    </div>
+                </details>
+
+                <style>
+                    details > summary::-webkit-details-marker { display: none; }
+                    details[open] summary span { transform: rotate(45deg); display: inline-block; transition: transform 0.3s; }
+                    details:not([open]) summary span { transform: rotate(0deg); display: inline-block; transition: transform 0.3s; }
+                    details[open] { background: rgba(10, 18, 50, 0.7) !important; border-color: rgba(255, 255, 255, 0.3) !important; }
+                    
+                    @keyframes faqExpand {
+                        0% { opacity: 0; max-height: 0; padding-top: 0; padding-bottom: 0; margin-top: 0; }
+                        100% { opacity: 1; max-height: 500px; padding-top: 20px; padding-bottom: 24px; margin-top: -5px; }
+                    }
+                    details[open] > div { 
+                        animation: faqExpand 0.4s cubic-bezier(0, 1, 0.5, 1) forwards; 
+                        overflow: hidden; 
+                    }
+                </style>
             </div>
 
         </div>

@@ -176,14 +176,14 @@
 .ts-link {
     display: inline-block;
     margin-top: 20px;
-    color: var(--primary);
+    color: #fff;
     text-decoration: none;
     font-weight: 600;
     transition: color 0.3s;
 }
 
 .ts-link:hover {
-    color: #fff;
+    color: var(--primary);
 }
 
 /* Download Banner */
