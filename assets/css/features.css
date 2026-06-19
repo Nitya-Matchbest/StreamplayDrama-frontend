@@ -150,8 +150,6 @@
     font-size: 1.3rem;
     color: #fff;
     margin-bottom: 20px;
-    border-left: 4px solid var(--primary);
-    padding-left: 10px;
 }
 
 .ts-card ul {

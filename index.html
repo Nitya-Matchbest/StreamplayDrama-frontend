@@ -175,15 +175,15 @@
 
 
     <!-- Platform Ownership Section -->
-    <section id="ownership-section-bg" class="section_container sip-bg blackbg hover-sec">
-        <div class="container">
+    <section id="ownership-section-bg" class="section_container sip-bg blackbg hover-sec" style="height: auto !important; min-height: unset !important; padding-bottom: 150px;">
+        <div class="container" style="height: auto !important;">
             <div class="section-head">
                 <h2 class="section-title"><span>Power</span> Your Drama Platform with Full <span>Ownership</span></h2>
                 <p class="section-subtitle">Scale your drama platform with full source code access and lifetime ownership.</p>
             </div>
 
             <!-- 6 Cards in 3 Column Grid -->
-            <div class="ownership-grid-container" id="ownershipGrid">
+            <div class="ownership-grid-container" id="ownershipGrid" style="align-content: start; row-gap: 30px;">
 
                 <!-- Card 1: Lifetime Platform Ownership -->
                 <div class="ownership-card drama-fade-up" style="animation-delay: 0.1s;">
@@ -322,11 +322,25 @@
         </div>
     </section>
 
+    <style>
+        .feature-carousel-card {
+            -webkit-mask-image: -webkit-radial-gradient(white, black);
+            transform: translateZ(0);
+        }
+        .feature-carousel-image {
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+        .feature-carousel-content {
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+    </style>
     <!-- Features Section - Auto-Scrolling Carousel -->
     <section class="section_container vip-bg features-carousel-section">
         <div class="container">
             <div class="section-head">
-                <h2 class="section-title"><span>All</span> Features You Need to Build a <span>Winning</span> Drama Business</h2>
+                <h2 class="section-title"><span>All Features</span> You Need to Build a <span>Winning Drama Business</span></h2>
                 <p class="section-subtitle">Effortlessly manage your content, gain valuable insights, and engage your
                     audience</p>
             </div>
@@ -512,7 +526,7 @@
     <section class="section_container vip-bg calculator-section">
         <div class="container">
             <div class="section-head">
-                <h2 class="section-title">Revenue Ownership <span>Calculator</span></h2>
+                <h2 class="section-title">Revenue <span>Ownership</span> Calculator</h2>
                 <p class="section-subtitle">Slide the values to see how much you keep by launching your drama platform with StreamPlay's zero-revenue-share model.</p>
             </div>
 
@@ -606,7 +620,7 @@
     <section class="section_container vip-bg support-sla-section" style="padding-top: 20px; padding-bottom: 60px; min-height: auto;">
         <div class="container">
             <div class="section-head">
-                <h2 class="section-title">Enterprise Support & <span>99.9% Uptime SLA</span></h2>
+                <h2 class="section-title">Enterprise Support & <span>99.9% Uptime</span> SLA</h2>
                 <p class="section-subtitle">We guarantee reliable streaming with strict service level agreements and a dedicated technical account manager.</p>
             </div>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px;">
@@ -734,7 +748,7 @@
     <!-- Section 4: Lead Gen / CTA Banner -->
     <section class="section_container vip-bg final-cta-section" style="padding-top: 20px;">
         <div class="container">
-            <div class="cta-banner-card">
+            <div class="cta-banner-card" style="box-shadow: none;">
                 <div class="cta-glow-circle"></div>
                 <div class="cta-banner-content">
                     <h2>Ready to Build Your Drama Platform?</h2>
