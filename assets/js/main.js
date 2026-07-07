@@ -532,7 +532,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 card.dataset.open = 'true';
                 card.style.background = 'rgba(10, 18, 50, 0.7)';
                 card.style.borderColor = 'rgba(255, 255, 255, 0.3)';
-                icon.style.transform = 'rotate(45deg)';
+                icon.innerText = '-';
+                icon.style.transform = 'rotate(0deg)';
                 
                 // Calculate height by setting it to auto temporarily
                 body.style.transition = 'none';
@@ -568,6 +569,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 card.dataset.open = 'false';
                 card.style.background = '#0A1232';
                 card.style.borderColor = 'rgba(255, 255, 255, 0.08)';
+                icon.innerText = '+';
                 icon.style.transform = 'rotate(0deg)';
                 
                 // Set explicitly from auto to pixels to animate down

@@ -1351,7 +1351,7 @@ header.scrolled {
   display: flex;
   gap: 2.5rem;
   position: absolute;
-  left: 38%;
+  left: 46%;
   transform: translateX(-50%);
   pointer-events: all;
   z-index: 1;
@@ -3440,9 +3440,8 @@ a.link:hover svg {
    ============================================================ */
 
 .features-carousel-section {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
+  min-height: auto !important;
+  display: block !important;
   padding: 50px 0;
   background: radial-gradient(circle at 50% 50%, rgba(130, 42, 238, 0.12) 0%, rgba(130, 42, 238, 0.05) 50%, var(--background) 100%) !important;
 }
@@ -3816,7 +3815,7 @@ a.link:hover svg {
 
 /* Comparison Table Section */
 .comparison-section {
-  padding: 80px 0;
+  padding: 20px 0 80px;
   min-height: auto !important;
   display: block !important;
 }
@@ -4376,3 +4375,165 @@ a.link:hover svg {
   border-color: var(--primary) !important;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4) !important;
 }
+
+
+/* FAQ ACCORDION CSS FROM STREAMPLAY */
+.accordion                             { color: #f5f5f5 !important; }
+.accordion { color: #000; }
+.accordion {
+  font-size: 22px;
+  font-weight: 700;
+  padding: 20px 0;
+  position: relative;
+  cursor: pointer;
+  transition: 0.3s all;
+}
+.accordion    { font-size: 18px; }
+.accordion {
+    font-size: 18px;
+    padding-right: 20px;
+  }
+.accordion:hover { color: #000000; }
+.accordion-slide {
+  box-shadow: none !important;
+  border: 1px solid #262626 !important;
+}
+.accordion-slide {
+  box-shadow: -3px 6px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 9px;
+  padding: 0 30px;
+  margin-bottom: 20px;
+}
+.accordion-slide {
+  padding: 0 30px;
+}
+.accordion-slide.open {
+  border: 1px solid #ffffff !important;
+}
+.accordion-slide.open .accordion { color: #000; }
+.accordion-wrap {
+  flex: 0 0 100%;
+  padding-right: 50px;
+}
+.accordion-slide .button {
+  margin: 0;
+  float: right;
+  font-size: 12px;
+  padding: 8px;
+}
+.accordion-slide.open .panel {
+  opacity: 1;
+  visibility: visible;
+  max-height: 800px;
+  overflow: hidden;
+  padding: 0 20px 20px 0;
+  transition: max-height 0.8s ease-in-out, opacity 0.5s ease 0.2s, padding-bottom 0.5s ease;
+}
+.accordion-slide.open h3.accordion::before {
+  transform: rotate(-45deg);
+}
+.accordion-slide.open h3.accordion::after {
+  transform: rotate(45deg);
+}
+.accordion-slide {
+  box-shadow: none !important;
+  border: 1px solid #262626 !important;
+}
+.accordion-slide {
+  box-shadow: -3px 6px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 9px;
+  padding: 0 30px;
+  margin-bottom: 20px;
+}
+
+/* MISSING FAQ ACCORDION CSS */
+.panel p,
+.user-wrap div span,
+.testimonial-section p,
+.player-wrapper p,
+.card-content p {
+  color: #cbcbcb !important;
+}
+.panel {
+  opacity: 0;
+  visibility: hidden;
+  max-height: 0;
+  padding-bottom: 0;
+  transition: max-height 0.5s cubic-bezier(0, 1, 0, 1), opacity 0.3s ease, padding-bottom 0.5s ease, visibility 0.5s;
+  font-size: 16px;
+  color: #2e2e2e;
+  overflow: hidden;
+}
+.panel h4 { display: inline-block; margin: 10px 0; }
+.panel p {
+  font-size: 18px;
+  line-height: 26px;
+  width: 95%;
+}
+.panel p span {
+  position: relative;
+  padding-left: 17px;
+  display: block;
+}
+.panel p span::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  top: 10px;
+  background: #000000;
+}
+.panel ul         { padding: 20px 25px; }
+.panel ul li      { list-style-type: disc; line-height: 30px; }
+.panel {
+  opacity: 1;
+  visibility: visible;
+  max-height: 800px;
+  overflow: hidden;
+  padding: 0 20px 20px 0;
+  transition: max-height 0.8s ease-in-out, opacity 0.5s ease 0.2s, padding-bottom 0.5s ease;
+}
+.panel p          { font-size: 16px; }
+.faq-arrow::after, .faq-arrow::before     { background: var(--sp-purple) !important; }
+.faq-arrow::after,
+.open .faq-arrow::before                  { background: #fff !important; }
+.faq-arrow {
+  position: absolute;
+  right: -3px;
+  top: 50%;
+  width: 20px;
+  height: 15px;
+  transition: all 0.5s ease;
+  transform: translate(-50%, -50%) rotate(-90deg);
+}
+.faq-arrow::before,
+.faq-arrow::after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 12px;
+  height: 2px;
+  background: #000;
+  border-radius: 2px;
+  transition: all 0.5s;
+}
+.faq-arrow::before {
+  top: 5px;
+  right: 1px;
+}
+.faq-arrow::after {
+  right: inherit;
+  left: 7px;
+  transform: rotate(90deg);
+  top: 5px;
+}
+.faq-arrow::before { transform: rotate(-90deg); }
+.faq-arrow::before,
+.open .faq-arrow::after       { background: #000; }
+.faq-arrow   { right: -20px; }
+.open .faq-arrow::after,
+.open .faq-arrow::before                  { background: #fff !important; }
+.open .faq-arrow::before,
+.open .faq-arrow::after       { background: #000; }
