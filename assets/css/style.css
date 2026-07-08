@@ -1726,14 +1726,14 @@ header.scrolled {
   cursor: pointer;
   transition: all 0.3s ease;
   text-align: center;
-  box-shadow: 0 4px 15px var(--shadow);
+  box-shadow: none;
 }
 
 .button:hover {
   background: linear-gradient(90deg, var(--btn-grad-1) 0%, var(--btn-grad-2) 100%); color: var(--text-primary);
   
   transform: translateY(-3px);
-  box-shadow: 0 8px 25px var(--shadow);
+  box-shadow: none;
 }
 
 .button.talk-to-us {
@@ -1964,13 +1964,13 @@ a.link {
   font-weight: 600;
   font-size: 16px;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px var(--shadow);
+  box-shadow: none;
 }
 
 a.link:hover {
   background: linear-gradient(90deg, var(--btn-grad-1) 0%, var(--btn-grad-2) 100%); color: var(--text-primary);
   transform: translateY(-3px);
-  box-shadow: 0 8px 25px var(--shadow);
+  box-shadow: none;
 }
 
 a.link svg {
@@ -2392,7 +2392,7 @@ a.link:hover svg {
   display: none;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 15px var(--shadow);
+  box-shadow: none;
   transition: all 0.3s ease;
   z-index: 999;
 }
@@ -2400,7 +2400,7 @@ a.link:hover svg {
 #backToTop:hover {
   background: var(--primary-hover);
   transform: translateY(-5px);
-  box-shadow: 0 8px 25px var(--shadow);
+  box-shadow: none;
 }
 
 #backToTop svg {
