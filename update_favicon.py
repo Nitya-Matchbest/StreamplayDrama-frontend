@@ -1,14 +1,26 @@
 import glob
+import re
 
-for filename in glob.glob('*.html'):
-    with open(filename, 'r', encoding='utf-8') as f:
+html_files = glob.glob('*.html')
+count = 0
+
+for file in html_files:
+    with open(file, 'r', encoding='utf-8') as f:
         content = f.read()
     
-    old_str = '<link rel="icon" href="assets/images/drama-icon.png" type="image/x-icon">'
-    new_str = '<link rel="icon" href="assets/images/new-logo-transparent.png" type="image/x-icon">'
+    original = content
+    # Look for <link rel="icon" href="assets/images/9 1.png" type="image/x-icon">
+    # Replace href with streamplay logo.png
+    content = re.sub(
+        r'<link\s+rel="icon"\s+href="[^"]*"\s+type="image/x-icon"\s*>',
+        r'<link rel="icon" href="assets/images/streamplay%20logo.png" type="image/x-icon">',
+        content, flags=re.IGNORECASE
+    )
     
-    if old_str in content:
-        content = content.replace(old_str, new_str)
-        with open(filename, 'w', encoding='utf-8') as f:
+    if content != original:
+        with open(file, 'w', encoding='utf-8') as f:
             f.write(content)
-        print('Updated', filename)
+        count += 1
+        print(f'Updated {file}')
+
+print(f'Total updated: {count}')
