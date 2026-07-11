@@ -10,10 +10,10 @@ for file in html_files:
     
     original = content
     # Look for <link rel="icon" href="assets/images/9 1.png" type="image/x-icon">
-    # Replace href with streamplay logo.png
+    # Replace href with Frame 1116606591.png
     content = re.sub(
         r'<link\s+rel="icon"\s+href="[^"]*"\s+type="image/x-icon"\s*>',
-        r'<link rel="icon" href="assets/images/streamplay%20logo.png" type="image/x-icon">',
+        r'<link rel="icon" href="assets/images/Frame%201116606591.png" type="image/x-icon">',
         content, flags=re.IGNORECASE
     )
     
