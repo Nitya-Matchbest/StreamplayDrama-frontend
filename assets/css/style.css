@@ -1294,7 +1294,7 @@ header.header {
   top: 0;
   left: 0;
   right: 0;
-  background: #0C0C0C;
+  background: #000000;
   backdrop-filter: blur(10px);
   z-index: 1000;
   border-bottom: 1px solid var(--border);
@@ -1541,7 +1541,7 @@ header.scrolled {
   position: absolute;
   width: 90%;
   height: 85%;
-  background: radial-gradient(circle, rgba(130, 42, 238, 0.28) 0%, rgba(130, 42, 238, 0.06) 50%, transparent 100%);
+  background: transparent;
   top: 7.5%;
   left: 5%;
   filter: blur(60px);
@@ -1821,7 +1821,7 @@ header.scrolled {
 
 /* Background Variations */
 .sip-bg {
-  background: linear-gradient(180deg, var(--background) 0%, var(--surface-light) 50%, var(--background) 100%);
+  background: var(--background);
 }
 
 .vip-bg {
@@ -1829,7 +1829,7 @@ header.scrolled {
 }
 
 .sip-bg.blackbg {
-  background: linear-gradient(135deg, var(--background) 0%, var(--surface) 50%, var(--background) 100%);
+  background: var(--background);
 }
 
 /* Player Container & Cards */

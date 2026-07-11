@@ -12,136 +12,143 @@
     <link rel="stylesheet" href="assets/css/mobile-responsive.css">
     <style>
         .contact-section {
-            padding: 120px 0 80px;
+            padding: 140px 0 60px;
             background: var(--background);
         }
         
         .contact-container {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
-            background: var(--surface);
+            background: #0A1232;
             border-radius: 15px;
-            padding: 50px;
-            border: 1px solid var(--border);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
         
-        .contact-title {
-            font-size: 36px;
-            color: var(--text-primary);
+        .form-content {
+            padding: 40px;
+        }
+
+        .image-content {
+            background-image: linear-gradient(rgba(10, 18, 50, 0.4), rgba(130, 42, 238, 0.2)), url('assets/images/Background.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
             text-align: center;
-            margin-bottom: 15px;
+        }
+
+        .contact-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 10px;
         }
         
         .contact-subtitle {
-            font-size: 18px;
-            color: var(--text-secondary);
-            text-align: center;
-            margin-bottom: 40px;
+            font-size: 13px;
+            color: #9CA3AF;
+            margin-bottom: 25px;
+            line-height: 1.5;
         }
         
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 15px;
         }
         
         .form-group label {
             display: block;
-            margin-bottom: 8px;
-            color: var(--text-primary);
+            margin-bottom: 6px;
+            color: #fff;
             font-weight: 600;
+            font-size: 13px;
         }
         
         .form-group input,
         .form-group textarea,
         .form-group select {
             width: 100%;
-            padding: 12px 15px;
-            background: var(--background);
-            border: 1px solid var(--border);
+            padding: 10px 14px;
+            background: #111520;
+            border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 8px;
-            color: var(--text-primary);
-            font-size: 16px;
+            color: #fff;
+            font-size: 14px;
             transition: all 0.3s;
         }
         
         .form-group input:focus,
         .form-group textarea:focus,
         .form-group select:focus {
-            border-color: var(--primary);
+            border-color: #822AEE;
             outline: none;
-            box-shadow: 0 0 0 3px var(--border-light);
         }
         
         .form-group textarea {
-            min-height: 120px;
+            min-height: 80px;
             resize: vertical;
         }
         
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-        
-        .phone-group {
-            display: grid;
-            grid-template-columns: 120px 1fr;
-            gap: 10px;
+            gap: 15px;
         }
         
         .submit-btn {
             width: 100%;
-            padding: 15px;
-            background: linear-gradient(135deg, var(--btn-grad-1) 0%, var(--btn-grad-2) 100%);
+            padding: 12px;
+            background: #4B1A8A; /* Dark purple default */
             color: #FFFFFF;
             border: none;
             border-radius: 8px;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
+            margin-top: 5px;
         }
         
         .submit-btn:hover {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--btn-grad-1) 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px var(--glow-red);
-        }
-        
-        .submit-btn:disabled {
-            background: var(--text-muted);
-            cursor: not-allowed;
-            transform: none;
+            background: #822AEE;
+            box-shadow: 0 4px 15px rgba(130, 42, 238, 0.4);
         }
         
         .success-message {
             background: #10B981;
             color: #FFFFFF;
-            padding: 15px;
+            padding: 12px;
             border-radius: 8px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             display: none;
         }
         
         .error-message {
             background: #EF4444;
             color: #FFFFFF;
-            padding: 15px;
+            padding: 12px;
             border-radius: 8px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             display: none;
         }
         
         @media screen and (max-width: 768px) {
             .contact-container {
-                padding: 30px 20px;
-            }
-            
-            .form-row {
                 grid-template-columns: 1fr;
             }
-            
-            .contact-title {
-                font-size: 28px;
+            .image-content {
+                min-height: 300px;
+            }
+            .form-content {
+                padding: 30px 20px;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -193,51 +200,53 @@
 <section class="contact-section">
     <div class="container">
         <div class="contact-container">
-            <h1 class="contact-title">Get in Touch</h1>
-            <p class="contact-subtitle">Request a demo and discover how Drama Platform can transform your streaming business</p>
-            
-            <div class="success-message" id="successMessage">
-                ✓ Thank you! Your message has been sent successfully. We'll get back to you soon.
-            </div>
-            
-            <div class="error-message" id="errorMessage">
-                ✗ Something went wrong. Please try again.
-            </div>
-            
-            <form id="contactForm">
-                <div class="form-row">
+            <div class="form-content">
+                <h1 class="contact-title">Get a Demo Today</h1>
+                <p class="contact-subtitle">For further queries, please complete form, will contact you<br>within 24 hours to help with the CMS and launch.</p>
+                
+                <div class="success-message" id="successMessage">
+                    ? Thank you! Your message has been sent successfully. We'll get back to you soon.
+                </div>
+                
+                <div class="error-message" id="errorMessage">
+                    ? Something went wrong. Please try again.
+                </div>
+                
+                <form id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input type="text" id="firstName" name="firstName" required placeholder="John">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Work Email</label>
+                            <input type="email" id="email" name="email" required placeholder="john@company.com">
+                        </div>
+                    </div>
+                    
                     <div class="form-group">
-                        <label for="firstName">First Name *</label>
-                        <input type="text" id="firstName" name="firstName" required placeholder="John">
+                        <label for="industry">Industry</label>
+                        <select id="industry" name="industry" required>
+                            <option value="Broadcasting">Broadcasting</option>
+                            <option value="Sports">Sports</option>
+                            <option value="Media & Entertainment">Media & Entertainment</option>
+                            <option value="Education">Education</option>
+                            <option value="Enterprise">Enterprise</option>
+                        </select>
                     </div>
+                    
                     <div class="form-group">
-                        <label for="lastName">Last Name *</label>
-                        <input type="text" id="lastName" name="lastName" required placeholder="Doe">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required placeholder="How can I help you?"></textarea>
                     </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="email">Email Address *</label>
-                    <input type="email" id="email" name="email" required placeholder="john.doe@example.com">
-                </div>
-                
-                <div class="form-group">
-                    <label for="phone">Phone Number *</label>
-                    <div class="phone-group">
-                        <input type="text" id="countryCode" name="countryCode" value="+1" placeholder="+1">
-                        <input type="tel" id="phone" name="phone" required placeholder="(555) 123-4567">
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="message">Message *</label>
-                    <textarea id="message" name="message" required placeholder="Tell us about your project..."></textarea>
-                </div>
-                
-                <button type="submit" class="submit-btn" id="submitBtn">
-                    Send Message
-                </button>
-            </form>
+                    
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        Request Demo
+                    </button>
+                </form>
+            </div>
+            <div class="image-content">
+            </div>
         </div>
     </div>
 </section>
